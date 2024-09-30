@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap');
+    * { font-family: 'Montserrat', sans-serif; }
+		body { font-weight: 300; margin: 0; line-height: 25px; }
+
+    header {
+      background-color: yellowgreen;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    header > * {
+      height: 100px;
+      width: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    section {
+      padding: 50px;
+      height: 300vh;  /* 스크롤을 강제로 만들기 위함 */
+      background-color: #eee;
+    }
+    section .banner {
+      height: 100px;
+      background-color: hotpink;
+      text-align: center;
+      line-height: 100px;
+      color: #fff;
+      position: sticky;
+      /* position: fixed; */
+      top: 10px;
+    }
+    section .items {
+      display: flex;
+      gap: 20px;
+      margin-top: 50px;
+      position: sticky;
+      top: 120px;
+    }
+    section .items div {
+      border: 5px solid #333;
+      height: 200px;
+      flex: 1;
+      background-color: #fff;
+    }
+    .gototop {
+      border: 5px solid red;
+      background-color: #fff;
+      position: fixed;
+      right: 10px;
+      bottom: 10px;
+      padding: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <div class="logo">Logo</div>
+      <div class="gnb">GNB</div>
+    </header>
+    <section>
+      <h1>position: sticky;</h1>
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis necessitatibus incidunt, inventore quibusdam itaque quaerat aspernatur ipsam ipsum reprehenderit repellat sit laborum voluptatum recusandae architecto, eveniet voluptates odio deleniti tempore quam dolorum qui commodi enim fugiat. Accusamus, beatae aspernatur modi tempora provident quam rem vel ab dolor! Illum non eveniet ex aut laudantium explicabo nulla ipsa deserunt, assumenda laboriosam officiis maiores magni delectus praesentium aspernatur autem dolorum itaque sint rem, architecto amet incidunt, in animi. Fugit culpa atque explicabo magni, iure repudiandae iusto voluptatibus placeat dicta laborum, aliquid maiores consequatur odio aspernatur esse pariatur ad optio et ipsa a ab?
+      </p>
+      <div class="banner">This is sticky banner</div>
+      <div class="items">
+        <div>Sticky Item 01</div>
+        <div>Sticky Item 02</div>
+        <div>Sticky Item 03</div>
+      </div>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Doloribus soluta molestiae minima sed at ab, dolorum odio doloremque natus eius ea animi facere, atque dolore id laudantium temporibus ex tenetur magni. Animi ipsam eligendi non a libero vel? Doloribus a quis quo cum repudiandae quos impedit temporibus? Quod illum esse distinctio maiores ut id molestiae quidem. Eveniet officia harum odit suscipit minus laborum animi enim non, quisquam voluptates expedita soluta sit quas? Architecto quas magni aperiam quos, sequi ipsum maxime accusantium obcaecati ducimus praesentium explicabo soluta. Accusantium, minus iure nobis error esse neque. Repellendus, asperiores? Nostrum perspiciatis quibusdam alias veniam.
+      </p>
+    </section>
+  </div>
+
+  <div class="gototop">Fixed</div>
+
+</body>
+</html>

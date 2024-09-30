@@ -1,0 +1,100 @@
+@import url(reset.css);
+
+body{
+  line-height: 1.5;
+  color: #222;
+}
+html{
+  scroll-behavior: smooth;
+  scroll-padding: 130px;
+}
+body{}
+
+.goto-top{
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  font-size: 38px;
+  border: 2px solid #333;
+  border-radius: 10px;
+  background-color: #fff;
+}
+
+
+header{
+  width: 100%;  /* position: fixed; 는 inline-block으로 변경되어서 가로너비 100%를 넣어주야 함 */
+  height: 80px;
+  border-bottom: 1px solid #ddd;
+  box-shadow: 0 5px 5px rgba(0,0,0,0.1);
+  background-color: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+#header-inner{
+  width: 1200px;
+  height: inherit;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo{
+  font-size: 26px;
+  text-transform: capitalize;
+  font-weight: 600;
+  color: royalblue;
+}
+.gnb{
+  display: flex;
+  column-gap: 30px;
+}
+.gnb a{
+  font-size: 18px;
+  text-transform: capitalize;
+  color: #333;
+  font-weight: 500;
+}
+.gnb a:hover{color: royalblue;}
+
+main{
+  height: 600px;
+  margin: auto;
+  /* background-image: url(../image/main.jpg);
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: cover; */
+
+  background: url(../image/main.jpg) no-repeat center/cover fixed;
+}
+
+section{
+  width: 1200px;
+  margin: 100px auto;
+}
+section h2{
+  font-size: 45px;
+  text-transform: uppercase;
+  text-align: center;
+  text-decoration-style: wavy;
+  text-decoration-color: royalblue;
+  text-decoration-line: underline;
+  text-decoration-thickness: 5px;
+  text-underline-offset: 10px;
+}
+section p{margin: 50px 0;}
+
+footer{
+  border-top: 1px solid #ccc;
+  padding: 50px 0;
+  text-align: center;
+}
+footer address{
+  font-size: 14px;
+  color: #666;
+}
+footer address strong{
+  font-style: normal;
+  color: royalblue;
+}

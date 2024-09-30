@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>실습3-프로필카드만들기</title>
+  <style>
+    /* Google Web Font */
+    @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
+
+    *{box-sizing: border-box;}
+    body{
+      font-family: "Montserrat", sans-serif;
+      font-size: 15px;
+      line-height: 20px;
+      margin: 0;
+      height: 100vh;
+      background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
+    }
+    .profile{
+      width: 400px;
+      background-color: #fff;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+      border-radius: 15px;
+      padding-top: 80px;
+    }
+    .profile .face{
+      border-radius: 50%;
+      border: 5px solid #eee;
+      position: absolute;
+      top: -75px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+    h2{
+      font-family: "Raleway", sans-serif;
+      color: #333;
+      font-size: 26px;
+      text-align: center;
+    }
+    .profile ul{
+      width: 90%;
+      padding: 0;
+      margin: auto
+    }
+    .profile ul li{
+      list-style-type: none;
+      border-bottom: 1px dotted #ccc;
+      padding: 5px 0;
+    }
+    .content p:nth-of-type(2){
+      font-family: "Dancing Script", cursive;
+      text-align: center;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .profile ul li span {
+      font-weight: 500;
+      width: 90px;
+      display: inline-block;
+      color: royalblue;
+    }
+    .content{
+      padding: 20px;
+    }
+    .content strong{
+      display: block;
+      font-size: 20px;
+      margin-bottom: 10px;
+    }
+    .content em{
+      font-style: normal;
+      border-bottom: 1px dashed crimson;
+    }
+    .content a{
+      display: block;
+      text-decoration: none;
+      width: 100%;
+      text-align: center;
+      background-color: royalblue;
+      color: #fff;
+      padding: 6px 0;
+      border: none;
+      text-transform: capitalize;
+      transition: 0.5s;
+    }
+    .content a:hover{background-color: navy;}
+  </style>
+</head>
+<body>
+
+  <div class="profile">
+    <img class="face" src="image/face.jpg" alt="woman">
+    <h2>Kathey A. Threlkeld</h2>
+    <ul>
+      <li><span>Birthda</span> July 20, 1992</li>
+      <li><span>Age</span> 29 years old</li>
+      <li><span>Email</span> leland90@tyonyihi.com</li>
+      <li><span>Phone</span> (291)330-6297</li>
+      <li><span>Occupation</span> UI/UX designer</li>
+      <li><span>Address</span> 1227 Platinum Drive Pittsburgh, USA</li>
+    </ul>
+    <div class="content">
+      <p>
+        <strong>What I do</strong>
+        I worked at a web agency as a UI/UX designer for about 7 years and as a <em>front-end publisher</em> for the last 7 years. As a front-end publisher, I published various coding websites made with <em>variable skills.</em>
+      </p>
+      <a href="#none">contact me</a>
+      <p>
+        I look forward to new projects with good people. thank you.
+      </p>
+    </div>
+  </div>
+  
+</body>
+</html>
