@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>27-counter함수</title>
+  <style>
+    section{counter-reset: num;}  /* 부모에 counter함수를 사용할 변수를 지정 */
+    section div:before{
+      content: counter(num) " - ";
+      counter-increment: num;
+    }
+
+    .list{
+      list-style-type: none;
+      padding: 0;
+    }
+    .list.count1{counter-reset: best;}
+    .list.count1 li:before{
+      content: "Best Program 0" counter(best) "-";
+      counter-increment: best;
+    }
+
+    .list.count2{counter-reset: item;}
+    .list.count2 li:before{
+      content: counter(item);
+      counter-increment: item;
+      background-color: royalblue;
+      color: #fff;
+      display: inline-block;
+      width: 15px;
+      font-size: 12px;
+      border-radius: 2px;
+      text-align: center;
+      margin-right: 5px;
+    }
+    .list.count2 li.active:before{background-color: crimson;}
+
+    .items{
+      list-style-type: none;
+      padding: 0;
+      line-height: 20px;
+      counter-reset: items;
+    }
+    .items li:before{
+      content: "3." counter(items);
+      counter-increment: items;
+      background-color: yellowgreen;
+      color: #fff;
+      border-radius: 3px;
+      padding: 0 3px;
+      margin-right: 5px;
+      font-size: 12px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 
+    CSS 카운터 함수
+    counter-reset : 카운터 변수를 정의 및 초기화(부모요소에 사용)
+    counter-increment : 카운터 변수의 증가 단위를 설정
+    counter : 표시할 순번 변수값을 계산
+  -->
+  
+  <section>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+    <div>CSS counter 함수사용하기</div>
+  </section>
+
+  <h2>웹퍼블리싱</h2>
+  <ul class="list count1">
+    <li>HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>JQuery</li>
+    <li>GSAP</li>
+  </ul>
+
+  <h2>웹퍼블리싱</h2>
+  <ul class="list count2">
+    <li class="active">HTML</li>
+    <li>CSS</li>
+    <li>Javascript</li>
+    <li>JQuery</li>
+    <li>GSAP</li>
+  </ul>
+
+  <ul class="items">
+    <li>댄스</li>
+    <li>음악</li>
+    <li>그림</li>
+    <li>운동</li>
+    <li>게임</li>
+  </ul>
+  
+</body>
+</html>

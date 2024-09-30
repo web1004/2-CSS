@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2-클래스와아이디</title>
+  <style>
+    /* p{color: red;} ->모든 p태그에 적용이 됨*/
+    .aa{color: green;}
+    .bb{font-weight: bold;}
+    #aa{color: crimson;}
+    #bb{font-weight: bold;}
+
+    .tt{text-align: center;background-color: gold;}
+    .t01{color: crimson;font-weight: bold;}
+    .t02{color: royalblue;}
+
+  </style>
+</head>
+<body>
+
+  <p>이것은 보통 단락입니다.</p>
+  <p class="aa bb">색상이 적용됩니다.</p> <!-- class는 1개 이상 적용할수 있음 -->
+  <p class="bb">진하게 표시됩니다.</p>
+  <p id="aa">색상이 적용됩니다.</p> <!-- id는 1개 이상 적용할수 없음 -->
+  <p id="bb">진하게 표시됩니다.</p>
+  <p class="bb">진하게를 또 적용합니다.</p> <!-- class는 문서내에서 여러번 불러서 적용할수 있음 -->
+  <p id="bb">진하게를 또 적용합니다.</p> <!-- id는 문서내에서 동일한 id를 다른곳에 적용할수 없음 -->
+
+  <div class="tt">
+    <h1>center태그를 사용한다면...</h1>
+    <p>
+      <span class="t01">center태그</span>를 사용한다면,<br>
+      <span class="t02">div 태그</span>를 이용해서<br>
+      스타일시트의 text-align 을 쓰는 것이 좋습니다.
+    </p>
+  </div>
+  
+</body>
+</html>

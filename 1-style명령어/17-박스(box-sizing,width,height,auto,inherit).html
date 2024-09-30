@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>17-박스(box-sizing,width,height,auto,inherit)</title>
+  <style>
+    .box-sizing-frame{
+      width: 600px;
+      height: 100px;
+      border: 10px solid green;
+      padding: 20px;
+    }
+  /*  
+  전체 너비는 600+(border좌우)20+(padding좌우)40 = 660px
+  전체 높이는 100+(border상하)20+(padding상하)40 = 160px 
+  */
+
+  .wrapper{
+    width: 300px;
+    height: 100px;
+    border: 5px solid gray;
+    background-color: lightyellow;
+    overflow: hidden;
+  }
+  .one, .two{
+    width: 150px;
+    height: 100px;
+    border: 5px solid royalblue;
+    background-color: skyblue;
+    float: left;
+  }
+  .one{box-sizing: border-box;}   /*padding,border를 포함시킴*/
+  .two{box-sizing: content-box;}   /*margin만 포함시킴*/
+
+  /* box-sizing속성
+    width와 height 속성은 글자를 감싸는 영역의 크기를 지정하는 스타일속성이며,
+    box-sizing속성은 width속성과 height속성이 차지하는 범위를 지정한다.
+
+    전체너비 = width + 2×(margin+border+padding)
+    전체높이 = height + 2×(margin+border+padding) 
+  */
+
+    /* 
+    기본너비(width) 값은 display속성에 따라 다름
+    기본높이(height)값은 auto
+    inherit값:부모의 값을 물려받는다.
+    */
+
+    .box1 span,
+    .box1 div,
+    .box1 button{
+      border: 1px solid red;
+    }
+
+    .box2{
+      border: 5px solid blue;
+      width: 800px;
+      overflow: hidden;
+    }
+    .box2 .item{
+      border: 3px solid gray;
+      height: 300px;
+      float: left;  /* float를 적용하면 inline-block로 변경되어서 가로너비가 100%에서 컨텐츠만큼으로 변경됨 */
+      width: calc(800px / 3); /* 연산기호 좌우에 공백이 반드시 있어야 함 */
+      box-sizing: border-box;
+    }
+
+    .parent1{
+      width: 500px;
+      height: 300px;
+      background-color: yellowgreen;
+    }
+    .parent1 .child{
+      background-color: blue;
+      width: inherit; /* 상위부모값을 상속받음 -> width:500px */
+      height: inherit; /* 상위부모값을 상속받음 -> height:300px */
+    }
+
+    .parent2{
+      border: 5px solid red;
+      width: 300px;
+      height: 450px;
+      border-radius: 20px;
+      overflow: hidden;
+    }
+    .parent2 img{ /*삽입한 이미지는 부모보다 큰 경우는 넘친다. */
+      width: inherit;
+      height: inherit;
+    }
+
+    /*
+      width:min-content; (컨텐츠를 유지하는 선에서 최소한의 크기로 지정, 엘리먼트의 너비를 줄일수 있는 만큼 최소로 줄이고 싶을때 사용)
+      width:max-content; (가로크기가 컨텐츠의 최대크기로 지정, 엘리먼트의 너비를 늘릴수 있는 만큼 최대한 늘리고 싶을때 사용)
+    */
+
+    .mcontent{
+      border: 5px solid #000;
+      width: 200px;
+      padding: 10px;
+    }
+    .mcontent div{
+      background-color: #ddd;
+      margin: 10px 0;
+      /* width: max-content; */
+      width: min-content;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>box-sizing속성</h1>
+  <div class="box-sizing-frame">Caculating the actual content size</div>
+
+  <h3>box-sizing:border-box;</h3>
+  <div class="wrapper">
+    <div class="one">50% </div> 
+    <div class="one">50% </div> 
+  </div>
+
+  <h3>box-sizing:content-box;</h3>
+  <div class="wrapper">
+    <div class="two">50% </div> 
+    <div class="two">50% </div> 
+  </div> 
+  <hr>
+
+  <h1>기본너비값, 기본높이</h1>
+  <div class="box1">
+    <span>span</span>
+    <div>div</div>
+    <button>button</button>
+  </div>
+  <hr>
+
+  <h1>width, height, calc()</h1>
+  <div class="box2">
+    <div class="item item1">item #01</div>
+    <div class="item item2">item #02</div>
+    <div class="item item3">item #03</div>
+  </div>
+  <hr>
+
+  <h1>inherit</h1>
+  <div class="parent1">
+    <div class="child">자식요소</div>
+  </div>
+  <hr>
+
+  <div class="parent2">
+    <img src="image/sky.jpg" alt="">
+  </div>
+  <hr>
+
+  <h1>min-content / max-content</h1>
+  <div class="mcontent">
+    <div>Lorem</div>
+    <div>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Excepturi distinctio explicabo, voluptates soluta vero eum quas voluptatem qui enim iure, voluptatum molestiae quod cupiditate placeat repellat consequuntur recusandae! Quos, nisi.</div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>14-float속성</title>
+  <style>
+    #row1, #row2{
+      width: 500px;
+      border: 5px solid #333;
+      text-align: center;
+      padding: 10px; 
+    }
+    .box01, .box02, .box03{
+      width: 100px;
+      height: 100px;
+      border: 1px solid #999;
+    }
+
+    /*해결방법(1)
+    자식이 모두 float를 적용하면 부모가 높이를 인식하지 못하는 문제 발생
+    ->해결:folat를 적용한 자식의 부모에게 "overflow:hidden;"을 적용함*/
+    #row1{overflow:hidden;}
+    #row1 .box01{float: left;}
+    #row1 .box02{float: left;}
+
+    /* 해결방법(2)
+    자식이 모두 float를 적용하면 부모가 높이를 인식하지 못하는 문제 발생
+    ->해결:맨뒤에 float가 해지된 내용이 없는 빈 자식을 만든 클래스를 만든 후 html문서의 부모(태그)에게 클래스를 적용한다.*/
+
+    .clear:after{  /* 해당하는 요소의 맨뒤 */
+      content: '';  /* 내용이 없음 */
+      display: block; /* after(가상클래스)는 inline형식이므로 block 형식으로 바꿈 */
+      clear: both;  /* float의 left,right 모두 해제 */
+    }
+
+    #row2 .box01{float: left;}
+    #row2 .box02{float: right;}
+
+    /* 해결방법(3)
+    float를 적용한 요소들 다음에 오는 요소(flaot를 적용하지않은 요소)에 직접 적용하는 방법
+    ->해결:float를 적용한 요소 다음에 오는 요소에 "clear:both;" 속성을 적용한다.*/
+    .box03{clear: both}
+  </style>
+</head>
+<body>
+
+  <div id="row1">
+    <div class="box01">box01</div>
+    <div class="box02">box02</div>
+  </div>
+
+  <div id="row2" class="clear">
+    <div class="box01">box01</div>
+    <div class="box02">box02</div>
+    <!--(2)float가 해지된 내용이 없는 빈 자식이 마지막에 들어가는 위치(.clear클래스에서 만든 내용)-->
+    <div class="box03">box03</div>
+  </div>
+
+</body>
+</html>

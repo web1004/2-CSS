@@ -1,0 +1,82 @@
+@import url(reset.css);
+
+body{margin: 30px;}
+
+/* 01 */
+.headline{
+
+}
+.headline:before{
+  content: '👩';
+  font-size: 56px;
+  color: blue;
+  margin-right: 20px;
+}
+.headline:after{
+  content: '#01';
+  background-color: yellowgreen;
+  color: #fff;
+  font-size: 20px;
+  padding: 0 5px;
+  border-radius: 5px;
+  margin-left: 20px;
+}
+
+/* 02-가상클래스 before, afeter 는 inline 요소이다.*/
+.coffee li:before{
+  content: '\2615';
+  font-size: 20px;
+  margin-right: 5px;
+}
+.coffee li.soldout:after,
+.coffee li.hit:after{
+  margin-left: 5px;
+  font-size: 12px;
+  text-transform: uppercase;
+  /* vertical-align: bottom; */
+  transform: translateY(-5px);
+  display: inline-block; /* transform속성은 inline요소에는 적용되지않음 */
+}
+.coffee li.soldout:after{
+  content: 'soldout';
+  color: royalblue;
+}
+.coffee li.hit:after{
+  content: 'hit';
+  color: red;
+  font-weight: bold;
+}
+
+/* 03 */
+.material-symbols-outlined{
+  font-size: 36px;
+  color: aqua;
+}
+.icon p:nth-of-type(1):before{
+  content: '\eb88';
+  font-family: 'Material Symbols Outlined';
+  font-size: 36px;
+  color: aqua;
+}
+
+.fa-solid{
+  font-size: 45px;
+  color: purple;
+}
+.icon p:nth-last-of-type(2):before{
+  content: '\f651';
+  font-family: fontawesome;
+  font-size: 45px;
+  color: purple;
+}
+
+.xi-eye-off{
+  font-size: 55px;
+  color: green;
+}
+.icon p:nth-of-type(3):before{
+  content: '\e99b';
+  font-family: xeicon; 
+  font-size: 55px;
+  color: green;
+}

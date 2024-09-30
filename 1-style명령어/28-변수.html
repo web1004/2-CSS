@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>28-변수</title>
+  <style>
+    /* 변수설정 */
+    :root{
+      /* 변수명 : 값; */
+      --primary: skyblue;
+      --secondary: black;
+      --positive: yellowgreen;
+      --nagative: crimson;
+      --headingFontSize: 32px;
+      --headingFontColor: dodgerblue;
+      --headingTextAlign: center;
+
+      /* Size */
+      --mainWidth: 1280px;
+      
+      /* Color */
+      --mainColor: #333;
+    }
+
+    .frame .btn{
+      border: none;
+			padding: 5px 20px;
+			border-radius: 5px;
+      color: #fff;
+			cursor: pointer;
+    }
+    .frame .btn.primary{background-color: var(--primary);}
+    .frame .btn.secondary{background-color: var(--secondary);}
+    .frame .btn.positive{background-color: var(--positive);}
+    .frame .btn.nagative{background-color: var(--nagative);}
+
+    .heading{
+      margin-top: 100px;
+      font-size: var(--headingFontSize);
+			color: var(--headingFontColor);
+			text-align: var(--headingTextAlign);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="frame">
+		<button class="btn primary">primary</button>
+		<button class="btn secondary">secondary</button>
+		<button class="btn positive">positive</button>
+		<button class="btn nagative">nagative</button>
+	</div>
+	
+	<div class="heading">webd1004 online class</div>
+	
+	<h1 class="heading">this is headline</h1>
+  
+</body>
+</html>
+
+<!--
+  변수(variables) 설정 
+  
+  :root { --변수명: 값; }
+  ex) :root { --focusColor: crimson; }
+  
+  변수 사용 
+  selector { 속성: var(변수명) }
+  ex) .heading { color: var(--focusColor); }
+  
+  *대소문자 구분함 ex) focusColor ≠ focuscolor
+  *특수문자 사용할 경우 - 또는 _ 사용 ex) focus-color, focus_color
+-->

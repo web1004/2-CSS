@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>15-표관련속성</title>
+  <style>
+    /* 01 */
+    .table1{
+      border: 3px solid #000;
+      text-align: center;
+      margin: 50px auto;
+    }
+    .table1 th, .table1 td{
+      border: 1px solid #666;
+      padding: 10px;
+    }
+    caption{
+      color: red;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 20px;
+      /* caption-side:bottom; ->표의 제목이 아래로 위치함*/
+    }
+    thead{
+      background-color: gray;
+      color: #fff;
+      font-size: 18px;
+    }
+    tfoot{
+      background-color: skyblue;
+      font-size: 14px;
+      font-style: italic;
+      text-decoration: underline;
+    }
+
+    /* 열그룹은 속성의 적용이 제한적임! */
+    .table1 .c1{background-color: aquamarine;}
+    .table1 .c2{background-color: lightcoral;}
+    .table1 .c3{background-color: burlywood;}
+
+    /* 02 */
+    table{margin-top: 30px;}
+    .table2{
+      border: 1px solid #000;
+      border-collapse: collapse;  /* 더블선인 테두리를 하나로 합침 */
+      /* border-collapse: separate; -> 더불선(기본값)* */
+    }
+    .table2 td{
+      border: 1px solid #000;
+      padding: 10px;
+    }
+
+    .table3{
+      border: 1px solid #000;
+      border-spacing:10px 50px;  /* 좌우,상하 */
+      /* border-collapse: separate; 일때만 적용가능 */
+    }
+    .table3 td{
+      border: 1px solid #000;
+      padding: 10px;
+      empty-cells:hide;  /* 내용이 없는 빈칸에 테두리를 없앰 */
+      /*empty-cells:show;(기본)*/  
+    }
+
+    .table4{
+      border: 1px solid #000;
+      border-collapse: collapse;  
+      width: 300px;
+      table-layout: fixed;  /*셀너비 고정*/
+      word-break:break-all; /*공백없이 영어를 입력한 경우 셀너비보다 넘치는것을 셀안에 표시*/
+    }
+    .table4 td{
+      border: 1px solid #000;
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 01 표그룹 -->
+  <table class="table1">
+    <caption>표의 제목</caption>
+
+    <!-- 표의 열그룹 -->
+    <colgroup>
+      <col class="c1">
+      <col span="3" class="c2">
+      <col class="c3">
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th>Table Header</th>
+        <th>Table Header</th>
+        <th>Table Header</th>
+        <th>Table Header</th>
+        <th>Table Header</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+      </tr>
+      <tr>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+      </tr>
+      <tr>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+      </tr>
+      <tr>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+      </tr>
+      <tr>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+        <td>Table Data</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>Table Footer</td>
+        <td>Table Footer</td>
+        <td>Table Footer</td>
+        <td>Table Footer</td>
+        <td>Table Footer</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <!-- 02 표의 속성 -->
+  <table class="table2">
+    <tr>
+      <td>내용1</td>
+      <td>내용2</td>
+      <td>내용3</td>
+    </tr>
+    <tr>
+      <td>내용4</td>
+      <td>내용5</td>
+      <td>내용6</td>
+    </tr>
+    <tr>
+      <td>내용7</td>
+      <td>내용8</td>
+      <td>내용9</td>
+    </tr>
+  </table>
+
+  <table class="table3">
+    <tr>
+      <td>내용1</td>
+      <td>내용2</td>
+      <td>내용3</td>
+    </tr>
+    <tr>
+      <td>내용4</td>
+      <td>내용5</td>
+      <td>내용6</td>
+    </tr>
+    <tr>
+      <td>내용7</td>
+      <td>내용8</td>
+      <td></td>
+    </tr>
+  </table>
+
+  <table class="table4">
+    <tr>
+      <td>
+        한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기한글로띄어쓰지않고길게입력하기
+      </td>
+      <td>
+        dslkfjdslkfjsdlkjfsdkjflsdakjflsdjflkdsjfklsdjflskdjflskjdflkasjd
+      </td>
+    </tr>
+  </table>
+
+</body>
+</html>

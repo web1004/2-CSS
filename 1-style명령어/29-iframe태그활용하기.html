@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>29-iframe태그활용하기</title>
+  <style>
+    body{
+      width: 100%;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    iframe{
+      width: 70%;
+      height: 600px;
+      border: none;
+    }
+    .tabmenu{
+      width: 80%;
+      height: 50px;
+      border: 2px solid #999;
+      margin: 20px auto;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+    }
+    .tabmenu a{
+      text-decoration: none;
+      color: #333;
+      font-weight: bold;
+    }
+    .tabmenu a:hover{color: crimson;}
+
+  </style>
+</head>
+<body>
+
+  <!-- iframe태그 : 창속의 창 만들기 -->
+  <iframe src="http://webd1004.pe.kr" name="iframe"></iframe>
+
+  <div class="tabmenu">
+    <a href="3-텍스트스타일.html" target="iframe">텍스트스타일</a>
+    <a href="8-그림자효과.html" target="iframe">그림자효과</a>
+    <a href="9-그라데이션효과.html" target="iframe">그라데이션효과</a>
+    <a href="7-배경과불투명도.html" target="iframe">배경과불투명도</a>
+    <a href="6-둥근모서리.html" target="iframe">둥근모서리</a>
+  </div>
+
+</body>
+</html>

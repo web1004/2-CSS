@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>22-animation속성</title>
+  <style>
+    @keyframes rotate-ani{
+      100%{transform: rotate(360deg);}
+    }
+    .rotate{
+      margin: 100px;
+      animation: rotate-ani 5s linear infinite;
+      transform-origin: 50% 50%;
+      /* transform-origin의 50% 50%은 회전의 중심 위치를 나타내며, 완전 원형으로 회전시키려면 이미지 파일의 정중앙에 회전시키려는 중심이 위치해야한다. */
+    }
+
+    /* 0% -> from , 100% -> to*/
+    @keyframes scale-ani{
+      0%,15%{transform: scale(0);}
+      40%{transform: scale(0.95);}
+      70%{transform: scale(0.65);}
+      100%{transform: scale(1);}
+    }
+    .scale{animation: scale-ani 3s infinite alternate;}
+
+    @keyframes ball-ani{
+      from{
+        transform: translateX(0) scale(1);
+      }
+      50%{
+        transform: translateX(500px) scale(0.5);
+      }
+      to{
+        transform: translateX(250px) scale(1.5);
+        background-color: pink;
+      }
+    }
+    .ball{
+      width: 100px;
+      height: 100px;
+      background-color: blueviolet;
+      border-radius: 50%;
+      animation: ball-ani 2s linear infinite;
+    }
+    .ball:hover{animation-play-state: paused;}
+
+    @keyframes colorbox-ani{
+      0%{
+        background-color:crimson;
+        width: 140px;
+        height: 120px;
+      }
+      25%{
+        background-color:yellowgreen;
+        width: 450px;
+        height: 120px;
+      }
+      50%{
+        background-color: royalblue;
+        width: 450px;
+        height: 180px;
+      }
+      75%{
+        background-color:brown;
+        width: 140px;
+        height: 180px;
+      }
+      100%{
+        background-color:gold;
+        width: 140px;
+        height: 120px;
+      }
+    }
+    .colorbox{
+      width: 100px;
+      height: 100px;
+      border: 2px solid #000;
+      background-color: #fff000;
+      text-align: center;
+      line-height: 100px;
+      font-weight: bold;
+      animation: colorbox-ani 5s infinite;
+    }
+
+    @keyframes anibox1{
+      from{width:0px;height:0px;}
+      to{width:150px;height:150px;}
+    }
+    @keyframes anibox2{
+      0%{width:0px;height:0px;}
+      25%{width:150px;height:150px;}
+      50%{width:100px;height:100px;}
+      75%{width:200px;height:200px;}
+      100%{width:150px;height:150px;}
+    }
+    .delay{
+      width: 500px;
+      height: 300px;
+      border: 5px solid #000;
+      margin-top: 100px;
+    }
+    .box1{
+      display: inline-block;
+      background-color: orange;
+      animation: anibox1 3s infinite;
+    }
+    .box2{
+      display: inline-block;
+      background-color: red;
+      animation: anibox2 3s infinite;
+      animation-delay: 3s;  /* 지연시간 */
+    }
+  </style>
+</head>
+<body>
+
+  <h1>CSS Animation</h1>
+  <div class="rotate-ani">
+    <img src="image/monkey.png" class="rotate" alt="">
+    <img src="image/monkey.png" class="scale" alt="">
+  </div>
+
+  <div class="ball"></div>
+
+  <h2>Color Box</h2>
+  <div class="colorbox">BOX</div>
+
+  <div class="delay">
+    <span class="box1">01</span>
+    <span class="box2">02</span>
+  </div>
+  
+</body>
+</html>
+
+<!-- *animation
+animation-name: 애니메이션의 이름
+animation-duration: 애니메이션이 재생(지속)되는 시간
+animation-delay: 애니메이션의 재생이 시작되기 전 대기 시간
+animation-timing-function: 애니메이션의 가속, 감속을 조정해서 애니메이션 느낌을 다르게
+animation-iteration-count: 애니메이션의 반복 횟수
+
+*animation-direction : 애니메이션의 재생 방향
+normal:기본값(0%->100%)
+reverse:역방향으로 움직인다.(100%->0%)
+alternate:정방향으로 움직이고 그 다음에는 역방향으로 움직인다.(0%->100%->0%)
+alternate-reverse:역방향으로 움직이고 그 다음에는 정방향으로 움직인다.(100%->0%->100%)
+
+*animation-fill-mode: 애니메이션이 재생되지 않는 동안의 스타일을 지정
+none:아무것도 지정하지 않은 상태
+forwards:애니메이션의 끝지점의 스타일이 적용된 상태에서 멈춤(애니메이션이 100%에 도달했을때 마지막 키프레임을 유지함)
+backwards:애니메이션이 시작되기전에는 0%, 애니메이션이 끝난 다음에는 원래것이 적용이 됨(애니메이션의 스타일을 애니메이션이 실제로 시작되기전에 미리 적용함)
+both:처음에도 끝에도 애니메이션의 시작점과 끝점을 적용함(forwards, backwards 둘다 적용함)
+
+*animation-play-state: 애니메이션의 재생, 정지 상태(running, paused)
+
+*요소는 애니메이션이 시작되기 전에 기본 스타일로 설정되고, 애니메이션이 끝난 후 기본스타일로 돌아갑니다.
+
+*브라우저의 성능을 최대치로 끌어올리기 위해서는 CSS Transform과 Opacity의 애니메이션을 사용하는것이 좋다.다른 값을 변경하면 브라우저가 페이지 레이아웃을 다시 렌더링하여 트윈이 많은 경우 성능을 저하시킬수 있다.
+-->

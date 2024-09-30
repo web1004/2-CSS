@@ -1,0 +1,6 @@
+@charset "utf-8";
+
+body{background-color: #ccc;}
+.container3 h2{background-color: #000;color: #fff;}
+.container3 h3{text-align: center;color: crimson;}
+.container3 p{margin-left: 200px;color: royalblue;}

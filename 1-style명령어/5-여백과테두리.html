@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>5-여백과테두리</title>
+  <style>
+    body{margin: 0;}
+
+    /* 
+      아래 예시처럼 보더 색상은 단색 말고 그라디언트 색상을 가질 수 없습니다.
+      button {
+        border: 1px solid linear-graient(to top, crimson, royalblue);
+      }   
+    */
+
+    button {
+      border: none;
+      background-color: #333;
+      color: #fff;
+      padding: 1em 2em;
+      border-radius: 100px;
+      cursor: pointer;
+      position: relative;
+      margin-left: 50px;
+    }
+    button:after {
+      content: '';
+      position: absolute;
+      background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+      /* width: 100%;
+      height: 100%; */
+      width: calc(100% + 6px);
+      height: calc(100% + 6px);
+      /* top: 0;
+      left: 0; */
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      border-radius: 100px;
+      z-index: -1;
+      transition: 0.5s;
+    }
+    /* button:hover {z-index: 0;} */
+    button:hover:after {
+      /* z-index: 0;
+      background-size: 500%; */
+      transform: translate(-50%, -50%) rotateX(180deg);
+    }
+
+    .bd1{
+      width: 300px;
+      height: 200px;
+      margin: 20px;
+      border: 10px solid;
+      border-radius: 20px;  /* 둥근모서리 적용되지않음 */
+      border-image: linear-gradient(to  bottom right ,#0060fd ,#03e6c8, #df30e2);
+      border-image-slice: 1; 
+      /* 이미지의 상하좌우 가장자리에서 내부 오프셋을 지정하여 4개의 모서리, 4개의 가장자리 및 중앙의 9개 영역을 나누는 값을 나타낸다. 기본 값은 100%이다.
+      fill:테두리 이미지의 중간 부분이 유지된다.(기본적으로 버려진다.)
+      */
+    }
+    .bd2{
+      width: 300px;
+      height: 200px;
+      margin: 20px;
+      border: 10px solid transparent;
+      border-radius: 20px;
+      background-image:linear-gradient(#fff, #fff), linear-gradient(to  bottom right ,#0060fd ,#03e6c8, #df30e2);
+      background-origin: border-box;  /* 배경이미지 위치기준(border-box,padding-box,content-box) */
+      background-clip: content-box, border-box; /* 배경적용범위(border-box,padding-box,content-box) */
+      /* 첫번째 그라디언트는 배경색으로 clip 의 첫번째 속성(content-box)이 적용되고,
+      두번째 그라디언트는 테두리색으로 clip 의 두번째 속성(border-box)에 적용된다. */
+    }
+
+    .box1{
+      background-color: gray;
+      width: 200px;
+      height: 200px;
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+      border-style: solid;
+      border-width: 20px;
+      border-color: red;
+      padding: 50px; /* 안쪽여백-안쪽여백이 들어가면 크기가 늘어남 */
+      margin: 100px; /* 바깥여백 */
+    }
+    .box2{
+      background-color: aqua;
+      width: 500px;
+      padding-left: 50px;
+      margin-left: 50px;
+    }
+
+    .mbox1, .mbox2, .mbox3{
+      width: 200px;
+      height: 100px;
+    }
+    .mbox1{
+      background-color: blue;
+      margin-bottom: 20px;
+    }
+    .mbox2{
+      background-color: red;
+      margin-bottom: 20px;
+    }
+    .mbox3{
+      background-color: green;
+      margin-top: 50px;  /* 20px과 50px이 겹쳐지면 큰쪽인 50px이 적용됨 */
+    }
+    /* 박스요소의 margin속성 사용시 주의할점!!
+    세로로 배치할 경우 마진과 마진이 만날때 마진값이 큰쪽으로 겹쳐지는 현상이다.
+    이런 현상을 마진중첩(margin overlap), 또는 마진상쇄(margin collapse)라고 한다. 
+    */
+
+    .boxin{
+      width: 600px;
+      border-width: 10px;
+      border-color: orange;
+      margin: 20px;
+      padding: 20px;
+    }
+    .bs1{border-style: none;}
+    .bs2{border-style: dotted;}
+    .bs3{border-style: dashed;}
+    .bs4{border-style: solid;}
+    .bs5{border-style: double;}
+    .bs6{border-style: ridge;}
+    .bs7{border-style: groove;}
+    .bs8{border-style: inset;}
+    .bs9{border-style: outset;}
+
+    h1{
+      /* border-left-style: solid;
+      border-left-width: 10px;
+      border-left-color: yellowgreen; */
+
+      border-left: 10px solid yellowgreen;
+      padding-left: 15px;
+      margin-left: 20px;
+    }
+
+    h2{
+      width: 800px;
+      height: 50px;
+      /* border-style: solid;
+      border-color: red;
+      border-width: 10px; */
+
+      /* border: 10px solid red ; */
+
+      /* border-style: solid;
+      border-color: crimson;
+      border-top-width: 10px;
+      border-bottom-width: 20px;
+      border-left-width: 5px;
+      border-right-width: 30px;  */
+
+      border: solid crimson;
+      /* border-width: 10px;  ->값이 1개일때는 상,하,좌,우 동일 */
+      /* border-width: 10px 20px; ->값이 2개일때는 상하,좌우 */
+      /* border-width: 3px 10px 30px; ->값이 3개일때는 상,좌우,하 */
+      border-width: 10px 30px 20px 5px;  /* 값이 4개일때는 상,우,하,좌 */
+    }
+
+    h3{
+      /* border-style: dashed;
+      border-color: blue;
+      border-top-width: 10px;
+      border-bottom-width: 10px;
+      border-left-width: 0;
+      border-right-width: 0;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      padding-left: 10px;
+      padding-right: 10px; */
+
+      border: dashed blue;
+      border-width: 10px 0;
+      padding: 20px 10px;
+    }
+
+    p{
+      /* border-style: dotted;
+      border-top-width: 10px;
+      border-bottom-width: 5px;
+      border-left-width: 0;
+      border-right-width: 0;
+      border-top-color: pink;
+      border-bottom-color: purple; 
+      border-left-color: transparent;
+      border-right-color: transparent; 
+      padding: 10px;  */
+
+      border-style:dotted;
+      border-width:10px 0 5px;
+      border-color: pink transparent purple; 
+      padding: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>border에 그레디언트 적용하기</h1>
+  <button>Gradient Button</button>
+  <hr>
+  <div class="bd1"></div>
+  <div class="bd2"></div>
+
+  <h1>바깥여백:margin / 안쪽여백:padding</h1>
+  <div class="box1">Text Contents</div>
+  <div class="box2">Lorem ipsum dolor sit amet consectetur adipisicing elit.</div>
+  <hr>
+
+  <h1>마진중첩현상</h1>
+  <div class="mbox1"></div>
+  <div class="mbox2"></div>
+  <div class="mbox3"></div>
+  <hr>
+
+  <h1>테두리의 모양:border-style / 테두리의 두께:border-width / 테두리의 색상:border-color</h1>
+  <div class="boxin bs1">테두리의 테두리모양:<strong>none</strong></div>
+  <div class="boxin bs2">테두리의 테두리모양:<strong>dotted</strong></div>
+  <div class="boxin bs3">테두리의 테두리모양:<strong>dashed</strong></div>
+  <div class="boxin bs4">테두리의 테두리모양:<strong>solid</strong></div>
+  <div class="boxin bs5">테두리의 테두리모양:<strong>double</strong></div>
+  <div class="boxin bs6">테두리의 테두리모양:<strong>ridge</strong></div>
+  <div class="boxin bs7">테두리의 테두리모양:<strong>groove</strong></div>
+  <div class="boxin bs8">테두리의 테두리모양:<strong>inset</strong></div>
+  <div class="boxin bs9">테두리의 테두리모양:<strong>outset</strong></div>
+  <hr>
+
+  <h1>속성 축약하기</h1>
+  <h2>연습중입니다...</h2>
+  <h3>Lorem ipsum dolor sit amet consectetur adipisicing elit. Asperiores, iure.</h3>
+  <p>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Inventore a pariatur dicta sunt ea atque perspiciatis fuga minus, quas dolorem quam tempore. Dolorem cumque doloribus incidunt accusantium qui tempore eaque.
+  </p>
+
+</body>
+</html>

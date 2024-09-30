@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>3-텍스트스타일</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+CU:wght@100..400&display=swap" rel="stylesheet">
+  <style>
+    .ts1{font-family:맑은고딕,돋움,굴림;}
+    .ts2{font-family:"바탕체","굴림체";}
+    .ts3{font-family:궁서체;}
+
+    .ts4{font-style:italic;} /* 웹에서 주로 사용함 */
+    .ts5{font-style:oblique;}
+
+    .ts6{font-weight:bold;}
+    .ts7{font-weight:900;} /*100~900으로 9단계이지만 글꼴의 종류에 따라 다름 */
+
+    .ts8{font-size:xx-small;}
+    .ts9{font-size:x-small;}
+    .ts10{font-size:small;}
+    .ts11{font-size:medium;}
+    .ts12{font-size:large;}
+    .ts13{font-size:x-large;}
+    .ts14{font-size:xx-large;}
+    .ts15{font-size:smaller;}
+    .ts16{font-size:25px;}
+    .ts17{font-size:180%;}
+
+  /*  .ts18{
+      font-family: 궁서체;
+      font-size: 36px;
+      font-style: italic;
+      font-weight: bold;
+    } */
+
+    /* .ts18{font: 궁서체 36px italic bold;} */
+    .ts18{font: italic bold 36px 궁서체;}
+    /*
+      폰트관련명령어들을 축약시에는 명령어의 순서를 반드시 지켜야 함!
+      폰트축약순서:스타일->사이즈->글꼴(글자크기와 글꼴은 반드시 있어야 함)
+    */
+
+    .wf1{
+      font-family: "Playwrite CU", cursive;
+      font-size: 36px;
+      color: blueviolet;
+    }
+
+    /* 삽입위치는 상관이 없음 */
+    @font-face {
+      font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+      src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimByeolbichhaneulTTF-B.woff2') format('woff2');
+      font-weight: 700;
+      font-style: normal;
+    }
+    .wf2{
+      font-family: 'HakgyoansimByeolbichhaneulTTF-B';
+      font-size: 45px;
+      color: crimson;
+    }
+
+    /* 웹폰트 사용하는 방법
+    @font-face {
+      font-family:'적용할폰트이름';
+      src:url('폰트경로') format('폰트형식');
+    }     
+    */
+
+    @font-face {
+      font-family:'seoulHB';
+      src:url('font/seoulHB.woff') format('woff');
+    } 
+
+    .wf3{
+      font-family:'seoulHB';
+      font-size: 52px;
+      color: green;
+    }
+
+    /*text-align속성은 block형식의 태그에만 적용할 수 있다*/
+    .author{text-align: right;}
+    .foot{text-align: center;}
+    .foot_t{text-align: right;} /*span태그는 inline형식의 태그라 적용안됨*/
+
+    /*vertical-align속성은 img,input,select,table의 th,td등에 적용할 수 있다*/
+    .ts19{vertical-align:top;} 
+    .ts20{vertical-align:middle;}
+    .ts21{vertical-align:bottom;}
+
+    .heading{
+      text-decoration-style: wavy;  /* solid, wavy, double */ 
+      text-decoration-color: crimson;
+      text-decoration-line: underline;
+      text-decoration-thickness: 5px;
+      text-underline-offset: 20px;
+      font-size: 45px;
+      text-align: center;
+    }
+    .ts22{text-decoration:underline;}
+    .ts23{text-decoration:line-through;}
+    .ts24{text-decoration:overline;}
+    a{text-decoration: none;}
+
+    .ts25{
+      text-indent: 100px;
+      letter-spacing: 3px;
+      word-spacing: 15px; 
+      line-height: 30px;
+    }
+    .ts26{text-indent: 100px;}   /* block태그에만 적용됨 */
+
+    .tr1{text-transform:none;}
+    .tr2{text-transform:capitalize;} /* 첫글자만 대문자로(많이 사용) */
+    .tr3{text-transform:uppercase;} /* 전체 대문자로(많이 사용) */
+    .tr4{text-transform:lowercase;} /* 전체 소문자로 */
+    .tr5{font-variant:small-caps;}  /* 작은대문자로 */
+
+    .dir1{
+      background-color: pink;
+      width: 500px;
+      height: 50px;
+      direction:ltr; /* 왼쪽에서 오른쪽으로 */
+    }
+    .dir2{
+      background-color: skyblue;
+      width: 500px;
+      height: 50px;
+      direction:rtl; /* 오른쪽에서 왼쪽으로 */
+    }
+
+    .headingBox{
+      background-color: yellowgreen;
+      color: #fff;
+      height: 500px;
+      text-align: center;
+      writing-mode: horizontal-tb;
+      writing-mode: vertical-rl;     
+    }
+    /* 
+      horizontal-tb : 수평방향으로 위(top)에서 아래(bottom)로
+      vertical-rl : 수직방향으로 오른쪽(right)에서 왼쪽(left)으로
+      vertical-lr : 수직방향으로 왼쪽(left)에서 오른쪽(right)으로 
+    */
+
+    /* 소스최적화방법(1)-그룹핑 */
+    /* .box1, 
+    .box2, 
+    .box3, 
+    .box4, 
+    .box5{
+      width: 300px;
+      height: 200px;
+      font-size: 26px;
+    } */
+
+    /* 소스최적화방법(2)-클래스를 2개이상 적용(동일한 클래스명은 공통으로 적용될 스타일) */
+    .box{
+      width: 300px;
+      height: 200px;
+      font-size: 26px;
+    }
+
+    .box1{background-color: #df80ff;}
+    .box2{background-color: rgb(40, 132, 25);}
+    .box3{background-color: rgba(40, 132, 25, 0.5);}  /* 0.5(0~1) -> 불투명도 50% */
+    .box4{background-color: hsl(231, 79%, 51%);}
+    .box5{background-color: hsla(231, 79%, 51%, 50%);}
+
+    /* 
+    아직까지는 표준이 아니라 브라우저 접두어(-webkit-)를 사용해야 합니다.
+    ex) display: -webkit-box;
+    ex) -webkit-box-orient: vertical;
+    ex) -webkit-line-clamp: 3;
+    */
+    .single-line,
+    .multi-line {
+      width: 500px;
+    }
+    .single-line p {
+      white-space: nowrap;  /* 줄바꿈을 하지 않음 */
+      overflow: hidden;
+      text-overflow: ellipsis;  /* 한줄만 가능함 */
+    }
+    .multi-line p {
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 3;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>글꼴의 종류:font-family</h1>
+  <p>
+    <span class="ts1">둘 이상의 글꼴을 지정할때</span>
+    <span class="ts2">여기는 굴림체나 바탕체로</span>
+    <span class="ts3">여기는 궁서체로</span>
+  </p>
+  <hr>
+
+  <h1>글꼴스타일:font-style</h1>
+  <p>normal,
+    <span class="ts4">italic기울임체</span>
+    <span class="ts5">oblique기울임체</span>
+  </p>
+  <hr>
+
+  <h1>글꼴 굵기:font-weight</h1>
+  <p>보통문자와 
+    <span class="ts6">bold굵은 문자</span>
+    <span class="ts7">(100,200...900)수치를 입력한 글자굵기</span>
+  </p>
+  <hr>
+
+  <h1>글꼴크기:font-size</h1>
+  <p>
+    <span class="ts8">xx-small</span>
+    <span class="ts9">x-small</span>
+    <span class="ts10">small</span>
+    <span class="ts11">medium</span>
+    <span class="ts12">large</span>
+    <span class="ts13">x-large</span>
+    <span class="ts14">xx-large</span>
+    <span class="ts15">smaller</span>
+    <span class="ts16">25px</span>
+    <span class="ts17">180%</span>
+  </p>
+  <hr>
+
+  <h1>글자관련 스타일 축약해서 사용하기</h1>
+  <p class="ts18">공통어를 이용하여 여러 스타일을 묶어서 축약할 수 있다.</p>
+  <hr>
+
+  <h1>웹폰트 사용하기</h1> 
+  <!--(1-1)CDN방식:무료구글주소를 연결하여 적용하는 방법-->
+  <p class="wf1">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat iusto quas ullam harum assumenda illum facere, qui labore ad eligendi.
+  </p>
+
+  <!--(1-2)CDN방식:눈누폰트 연결하여 적용하는 방법-->
+  <p class="wf2">
+    국가는 농지에 관하여 경자유전의 원칙이 달성될 수 있도록 노력하여야 하며, 농지의 소작제도는 금지된다.
+  </p>
+
+  <!--(2)서버에 직접 업로드 한후 적용하는 방법-->
+  <p class="wf3">
+    국무위원은 국정에 관하여 대통령을 보좌하며, 국무회의의 구성원으로서 국정을 심의한다.
+  </p>
+
+  <p class="wf4">webdesign &amp; webpublishing</p>
+  <p class="wf5">웹디자이너&amp;웹퍼블리셔 홍길동</p>
+  <hr>
+
+  <h1>수평정렬(가로)의 종류:text-align</h1>
+  <p>
+    사실 정렬방법에는[left, right, center] 외에 [justify]라는 것이 
+    있습니다. 소위[양끝정렬]이라는 것인데 이 정렬방법은 실제로 사용될 
+    경우 문서의 모양이 원하는 형태로 나타나지 않아 지금은 거의 사용
+    되고있지 않습니다.
+  </p>
+  <p class="author">[글:영진기획2팀]</p>
+  <div class="foot">
+    <p>-감상문을 보내주세요-</p>
+    <p>&copy;copyright 2023 youngjin.com. inc. all right Reserved.</p>
+  </div>
+  <span class="foot_t">웹퍼블리싱</span><br>
+  <hr>
+
+  <h1>수직정렬(세로)의 종류:vertical-align</h1>
+  <p><img src="image/dog.jpg" class="ts19" alt="">top지정</p>
+  <p><img src="image/dog.jpg" class="ts20" alt="">middle지정</p>
+  <p><img src="image/dog.jpg" class="ts21" alt="">bottom지정</p>
+  <hr>
+
+  <h1 class="heading">선의 종류:text-decoration</h1>
+  <p>
+    <span class="ts22">underline밑줄</span> 
+    <span class="ts23">line-through취소선</span>
+    <span class="ts24">overline윗줄</span>
+    <span><a href="#">none하이퍼링크에 밑줄없애기</a></span>
+  </p>
+  <hr>
+
+  <h1>들여쓰기:text-indent속성/글자간격조정:letter-spacing/단어간격조정:word-spacing/줄간격조정:line-height</h1>
+  <p class="ts25">
+    헌법개정은 국회재적의원 과반수 또는 대통령의 발의로 제안된다. 학교교육 및 평생교육을 포함한 교육제도와 그 운영, 교육재정 및 교원의 지위에 관한 기본적인 사항은 법률로 정한다. 공공필요에 의한 재산권의 수용·사용 또는 제한 및 그에 대한 보상은 법률로써 하되, 정당한 보상을 지급하여야 한다. 국무총리 또는 행정각부의 장은 소관사무에 관하여 법률이나 대통령령의 위임 또는 직권으로 총리령 또는 부령을 발할 수 있다. 정당은 법률이 정하는 바에 의하여 국가의 보호를 받으며, 국가는 법률이 정하는 바에 의하여 정당운영에 필요한 자금을 보조할 수 있다. 
+  </p>
+  <span class="t26">국가유공자·상이군경 및 전몰군경의 유가족은 법률이 정하는 바에 의하여 우선적으로 근로의 기회를 부여받는다.</span>
+  <hr>
+
+  <h1>영문의 대소문자전환:text-transform</h1>
+  <p>[none]<span class="tr1">대한민국(korea)</span></p>
+  <p>[capitalize]<span class="tr2">대한민국(korea)</span></p>
+  <p>[uppercase]<span class="tr3">대한민국(korea)</span></p>
+  <p>[lowercase]<span class="tr4">대한민국(KOREA)</span></p>
+
+  <h1>영문 작은 대문자로 표시하기:font-variant</h1>
+  <p>[small-caps]<span class="tr5">ezen academy online class</span></p>
+  <hr>
+
+  <h1>텍스트의 쓰기방향 지정하기:direction</h1>
+  <div class="dir1">이젠아카데미 평생교육원</div>
+  <div class="dir2">이젠아카데미 평생교육원</div>
+  <hr>
+
+  <h1>텍스트줄을 가로로 배치할지 세로로 배치할지 지정:writing-mode</h1>
+  <div class="headingBox">
+    <h1>이젠아카데미학원</h1>
+    <h1>EZEN Academy, All that CSS3</h1>
+  </div>
+  <hr>
+
+  <h1>색상 표현하기</h1>
+  <!-- 소스최적화 방법1 -->
+  <!-- <div class="box1">#6자리숫자</div>
+  <div class="box2">rgb</div>
+  <div class="box3">rgba</div>
+  <div class="box4">hsl</div>
+  <div class="box5">hsla</div>
+  -->
+
+  <!-- 초스최적화 방법2 -->
+  <div class="box box1">#6자리숫자</div>
+  <div class="box box2">rgb</div>
+  <div class="box box3">rgba</div>
+  <div class="box box4">hsl</div>
+  <div class="box box5">hsla</div>
+  <hr>
+
+  <h1>한줄 말줄임표시 & 여러줄말 줄임표시</h1>
+  <div class="single-line">
+    <h2>Single Line</h2>
+    <p>
+      지방자치단체는 주민의 복리에 관한 사무를 처리하고 재산을 관리하며, 법령의 범위안에서 자치에 관한 규정을 제정할 수 있다. 국회에서 의결된 법률안은 정부에 이송되어 15일 이내에 대통령이 공포한다.
+    </p>
+  </div>
+  <div class="multi-line">
+    <h2>Multi Lines</h2>
+    <p>
+      언론·출판에 대한 허가나 검열과 집회·결사에 대한 허가는 인정되지 아니한다. 재의의 요구가 있을 때에는 국회는 재의에 붙이고, 재적의원과반수의 출석과 출석의원 3분의 2 이상의 찬성으로 전과 같은 의결을 하면 그 법률안은 법률로서 확정된다. 국정감사 및 조사에 관한 절차 기타 필요한 사항은 법률로 정한다.
+    </p>
+  </div>
+
+</body>
+</html>
+<!-- 
+serif / Sans Serif(명조체와 고딕체) 웹에서는 고딕체 -->

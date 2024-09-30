@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>25-요소의 비율aspect와이미지크기조정object-fit속성</title>
+  <style>
+    .frame1{
+      border: 2px solid #000;
+      width: 400px;
+      height: 400px;
+      background: url(image/country.jpg) no-repeat left center;
+      background-size: cover;
+      margin-bottom: 30px;
+    }
+
+    .frame2{
+      border: 2px solid #000;
+      width: 400px;
+      height: 400px;
+    }
+    .frame2 img{
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+      object-position: left;
+    }
+    /* object-fit속성 : 컨테이너 안에 맞게 <img> 또는 <vedio>크기를 조정하는 방법을 지정할때 사용함
+    object-fit 과 object-position으로 img를 배경처럼 사용가능
+    부모요소에 가로세로 크기가 있어야 하고, img는 부모의 크기를 받아와야 함
+
+      object-fit:none;
+      object-fit:fill;
+      object-fit:contain;
+      object-fit:cover;
+      object-fit:scale-down;   
+    */
+
+    .frame3,
+		.frame4,
+		.frame5{
+			border: 2px solid;
+			width: 400px;
+			height: 400px;
+		}
+
+    .frame3 img,
+    .frame4 img,
+    .frame5 img{
+      width: inherit;
+      height: inherit;
+      object-fit: cover;
+      mask-image: url(image/heart.png);
+      mask-size: 350px;
+      mask-repeat: no-repeat;
+      mask-position: center center;
+    }
+    .frame4 img{mask-image: url(image/blush.png);}
+    .frame5 img{mask-image: url(image/logo.png);}
+    /* mask-image는 서버환경에서만 적용이 되어서 탐색기에서 파일을 더블클릭해서 보면 보이지 않음 */
+
+
+    .frame6 div{
+			border: 5px solid;
+			margin: 10px;
+			padding: 20px;
+			width: 400px;  /* 가로로 할지 세로로 할지 둘중에 하나만 기준정함 */
+		}
+    .frame6 div:nth-child(1) {aspect-ratio: 16/9;}
+    .frame6 div:nth-child(2) {aspect-ratio: 21/9;}
+		.frame6 div:nth-child(3) {aspect-ratio: 4/3;}
+		.frame6 div:nth-child(4) {aspect-ratio: 1/1;}
+		.frame6 div:nth-child(5) {aspect-ratio: 2/1;}
+		.frame6 div:nth-child(6) {aspect-ratio: 3/1;}
+    .frame6 div:nth-child(6) {aspect-ratio: 2.35/1;}
+
+    .box div {
+			border: 5px solid red;
+			margin: 10px;
+			padding: 20px;
+			height: 300px;
+			aspect-ratio: 9/16;
+		}
+  </style>
+</head>
+<body>
+
+  <h1> 컨테이너 안에 맞게 <img> 크기 조정: object-fit </h1>
+  <div class="frame1"></div>
+  <div class="frame2">
+    <img src="image/country.jpg" alt="">
+  </div>
+  <hr>
+
+  <h1>클리핑마스크 :mask-image</h1>
+  <div class="frame3">
+    <img src="image/back.jpg" alt="">
+  </div>
+  <div class="frame4">
+    <img src="image/back.jpg" alt="">
+  </div>
+  <div class="frame5">
+    <img src="image/back.jpg" alt="">
+  </div>
+  <hr>
+
+  <h1>요소의 비율을 설정 : aspect-ratio</h1>
+  <div class="frame6">
+    <div>aspect-ratio: 16 / 9</div>
+		<div>aspect-ratio: 21 / 9</div>
+		<div>aspect-ratio: 4 / 3</div>
+		<div>aspect-ratio: 1 / 1</div>
+		<div>aspect-ratio: 2 / 1</div>
+		<div>aspect-ratio: 3 / 1</div>
+    <div>aspect-ratio: 2.35 / 1</div>
+  </div>
+
+  <div class="box">
+    <div>9/16</div>
+  </div>
+  
+</body>
+</html>

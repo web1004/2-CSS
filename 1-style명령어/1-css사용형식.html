@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>1-css사용형식</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body{background-color: #ccc;}
+    .container1 h2{background-color: #000;color: #fff;}
+    .container1 h3{text-align: center;color: crimson;}
+    .container1 p{margin-left: 200px;color: royalblue;}
+  </style>
+</head>
+<body>
+  
+  <!--사용형식1:<head>~</head>사이에 선언하기-->
+  <div class="container1">
+    <h2>css사용형식1:문서내 &lt;head&gt;와 &lt;/head&gt; 사이에 css선언하기</h2>
+    <h3>스타일시트예제</h3>
+    <p>이 예에서는 문자색, 배경색, 왼쪽여백을 설정하고 있습니다.</p>
+  </div>
+
+  <!--사용형식2(inline-style형식):<head>~</head>사이에 선언하지않고, 문서내 태그에 직접 적용하기--> 
+  <div class="container2">
+    <h2 style="background-color: #000;color: #fff;">css사용형식2:&lt;head&gt;와 &lt;/head&gt; 사이에 선언하지않고, 문서내 태그에 직접 적용하기</h2>
+    <h3 style="text-align: center;color: crimson;">스타일시트예제</h3>
+    <p style="margin-left: 200px;color: royalblue;">이 예에서는 문자색, 배경색, 왼쪽여백을 설정하고 있습니다.</p>
+  </div>
+
+  <!--사용형식3:"*.css"외부파일을 만들어서 불러오기-->
+  <div class="container3">
+    <h2>사용형식3:"*.css"외부파일을 만들어서 불러오기</h2>
+    <h3>스타일시트예제</h3>
+    <p>이 예에서는 문자색, 배경색, 왼쪽여백을 설정하고 있습니다.</p>
+  </div>
+
+</body>
+</html>

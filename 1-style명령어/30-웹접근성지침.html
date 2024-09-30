@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>30-웹접근성지침</title>
+  <style>
+    /* (8) */
+    table{
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>웹접근성지침 2. 2</h1>
+  <p>2022년 12월 28일 KWCAG 2.2으로 개정 : 4개의 원칙과 33개의 검사항목으로 구성되어 있다.</p>
+  <hr>
+
+  <h2>1.인식의 용이성 (Perceivable) : 모든 콘텐츠는 사용자가 인식할 수 있어야 한다.</h2>
+
+
+  <hr>
+
+  <h2>2.운용의 용이성(Operable) : 사용자 인터페이스 구성요소는 조작 가능하고 내비게이션 할 수 있어야 한다. </h2>
+
+
+  <hr>
+
+  <h2>3.이해의 용이성(Understandable) : 콘텐츠는 이해할 수 있어야 한다.</h2>
+
+
+  <hr>
+
+  <h2>4.견고성(Robust) : 웹 콘텐츠는 미래의 기술로도 접근할 수 있도록 견고하게 만들어야 한다.</h2>
+  <h3>4.1.1	(마크업 오류 방지) 마크업 언어의 요소는 열고 닫음, 중첩 관계 및 속성 선언에 오류가 없어야 한다.</h3>
+
+  <div class="card">
+    <!--Error <h2><div>Card Headline</div></h2> -->
+    <div><h2>Card Headline</h2></div>
+    <!--Error <span><p>Jop Position : Web Publisher</p></span> -->
+    <p><span>Jop Position : Web Publisher</span></p>
+    <div>Email myemail@myemail.com</div>
+    <button>Concact : 010-1234-5689</button>
+    <a href="#none"><div>Read More</div></a>
+  </div>
+
+  <!-- (1)
+  *block요소는 텍스트,inline,inline-block 요소를 모두 포함할 수 있다.
+  (단, p태그와 h1~h6태그는 block요소이지만 같은 block요소를 포함할수 없다. )
+
+  *inline 요소는 block요소를 포함할 수 없다.(단, a태그는 예외)    
+  -->
+
+  <ul>
+    <!--Error <h2>리스트 제목</h2> -->
+    <li>리스트
+      <div>내용</div>
+    </li>
+    <li>리스트</li>
+    <li>리스트</li>
+    <li>리스트</li>
+    <li>리스트</li>
+  </ul>
+
+  <dl>
+    <!--Error <h2>제목</h2> -->
+    <dt><div>소제목</div></dt>
+    <dd><div>내용이 들어갑니다</div></dd>
+  </dl>
+
+  <!-- (2)
+  *목록태그인 ul,ol,dl 은 본인의 지정된 자식이외에는 포함할수 없다.
+  (예:ul,ol 은 li만 자식으로.... dl은 dt,dd만 자식으로)
+  -->
+
+  <ul>
+    <li><a href="#none">링크1</a></li>  <!-- #none 가상링크로 맨위로 올라가지 않게 함 -->
+    <li>
+      <a href="#none">
+        <!--Error <div><a href="#none">링크2</a></div> -->
+      </a>
+    </li>
+  </ul>
+  <!-- (3) a태그는 중첩해서 사용할수 없다.-->
+
+  <!--Error <img src="image/sky.jpg"> -->
+  <img src="image/sky.jpg" alt="높은건물들">
+  <!-- 이미지에 텍스트가 있는 경우는 축약해서 작성을 하고, 텍스트가 없는 경우에는 이미지를 설명할수 문구를 넣는다. -->
+
+  <!--Error <img src="image/check_icon.jpg"> -->
+  <img src="image/check_icon.jpg" alt="">
+  <!-- 아무 뜻이 없는 블릿같은 경우는 alt내용을 비워둔다. 내용이 없다고 해도 alt자체를 넣지 않으면 안됨! -->
+
+  <!-- (4) 
+  *이미지 삽입관련 태그에는 반드시 alt 속성을 적용한다.
+  (예: img, map)
+  -->
+
+  <div class="section">
+    <div class="box"></div>
+    <div id="boxin"></div>
+    <div class="box"></div>
+    <!--Error <div id="boxin"></div> -->
+  </div>
+
+  <!-- (5) 문서내에 id는 여러번 적용할수 없다. -->
+
+  <header>헤더영역
+    <nav>메뉴영역</nav>
+  </header>
+  <section>
+    <h3>섹션영역</h3>
+    Lorem ipsum dolor sit, amet consectetur adipisicing elit. Illum facilis in quod distinctio laudantium pariatur quasi, tempora rerum, minus sequi, cumque totam accusamus. Earum porro consequatur tempora itaque reiciendis? Debitis sit, incidunt quidem magni quasi officiis placeat at similique odio quod natus vero porro perferendis sequi assumenda accusamus amet nisi!
+    <article>
+      <h4>article title</h4>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, amet!  
+    </article>
+    <article>
+      <h4>article title</h4>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, amet!  
+    </article>
+    <article>
+      <h4>article title</h4>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, amet!  
+    </article>   
+  </section>
+  <footer>푸터영역</footer>
+  <!-- (6) 
+  시멘틱태그인 section과 article은 h2~h6 제목태그를 같이 사용해라...(현재 에러는 아니고 경고로만 뜸) 
+  -->
+
+  <h1>웹표준 준수하기</h1>
+  <h1>웹표준 준수하기</h1>
+  <h1>웹표준 준수하기</h1>
+
+  <!--(7)
+  소스의 가독성을 높이기 위해서 h1~h6 큰제목태그중에 h1태그는 맨 상단에 한번만 삽입하고, 나머지 h2~h6까지를 사용한다. 
+  -->
+
+  <!--Error <table border="1px"> -->
+  <table>
+    <tr>
+      <td>01</td>
+      <td>02</td>
+      <td>03</td>
+    </tr>
+    <tr>
+      <td>04</td>
+      <td>05</td>
+      <td>06</td>
+    </tr>
+  </table>
+
+  <!--(8)
+  태그에 사용하는 속성들은 태그에 직접 넣는 inline 방식을 사용하지 말고 css 속성을 사용한다.
+  <p align="center">....</p>
+  -->
+
+</body>
+</html>

@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>12-position속성</title>
+  <style>
+    /* 01 */
+    .items div{
+      border: 1px solid #000;
+      width: 200px;
+      height: 200px;
+    }
+    .items .item1{
+      background-color: gold;
+      position: static;  /* 기본값-입력한 순서대로 나옴 */
+    }  
+    .items .item2{
+      background-color: yellowgreen;
+      position: relative; /* 상대값으로 html구조상 처음 입력이 된 위치를 기준으로 (0,0)이 됨 */
+      top: 100px;
+      left: 200px; 
+    }
+    .items .item3{
+      background-color: crimson;
+      position: absolute;  /* 절대값으로 부모설정이 안되었을때는 모니터를 기준으로 0,0 이 됨(둥둥 떠있는것으로 보면 되고, 다음요소가 인식을 하지 못하고 올라옴)*/
+      top: 0;
+      left: 0;
+    }
+    /* position속성이 없으면 left,right,top,bottom,z-index 를 사용할수 없음(static 제외) */
+
+    /* 02 position: absolute; 는 절대값으로 부모(relative)를 설정해주지 않으면 모니터를 기준으로 위치를 설정함*/
+    .box{
+      width: 100px;
+      height: 100px;
+      background-color: royalblue;
+      position: absolute;
+      top: 100px;
+      right: 50px;
+    }
+
+    /* 03 */
+    .box_main{ /* 부모 */
+      border: 5px solid #000;
+      width: 800px;
+      height: 300px;
+      position: relative; /* 부모설정 */
+      top: 200px;
+      left: 200px;
+      overflow: hidden; /* 자식이 부모보다 넘쳤을때 설정(hidden,auto,scroll) */
+    }
+    .box1, .box2, .box3{  /* 자식 */
+      width: 200px;
+      height: 200px;
+      font-size: 32px;
+      position: absolute;
+      /* 자식설정->"position: relative;"로 부모가 정해지면 부모를 기준으로 0,0 이 되고, 부모설정이 정해지지 않으면 모니터를 기준으로 0,0 이 된다.*/
+    }
+    .box1{
+      background-color: gold;
+      top: 50px;
+      left: 50px;
+      z-index: 300;
+    }
+    .box2{
+      background-color: skyblue;
+      top: 150px;
+      left: 150px;
+      z-index: 200;
+    }
+    .box3{
+      background-color: lightgray;
+      top: 200px;
+      left: 200px;
+      z-index: 100;
+    }
+    /* (중요!!!) 
+    기본적으로 z-index:0 이며, 숫자가 클수록 위에 올라옴
+    z-index가 같다는 기준으로 relative가 absolute보다 우선
+    z-index가 같다는 기준으로 2개의 absolute가 있으면 html 출현 순서가 나중에 나온 것이 우선한다.   
+    */
+
+    /* 04 */
+    .top{
+      position: fixed;  /* 둥둥 떠있는 고정값 */
+      right: 20px;
+      bottom: 20px;
+    }
+    .top p{
+      width: 50px;
+      height: 50px;
+      background-color: #333;
+      color: #fff;
+      font-size: 14px;
+      font-weight: bold;
+      border-radius: 50%;
+      text-align: center;
+      /* vertical-align: middle; ->적용되지않음*/
+      line-height: 50px;
+    }
+
+    /* 05 position:absolute 또는 position:fixed 를 적용하면 모든 태그가 inline-block으로 변경됨(display속성을 적용하지 않아도 됨)*/
+    .pos{
+      width: 200px;  /* span태그는 inline요소라 크기값이 적용되지 않는데 적용됨 */
+      height: 200px;
+      background-color: orange;
+      position: absolute;
+      top: 50px;
+      right: 50px;
+    }
+
+    /* 06 position:sticky 처음 위치에서 스크롤을 되다가 맨위에 닿았을때부터는 고정시킴 */
+    .sticky p{font-size: 36px;}
+    .topfix{
+      background-color: royalblue;
+      padding: 5px;
+      color: #fff;
+      position: sticky;
+      top: 0px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 01 position속성:static(기본값), relative, absolute -->
+  <div class="items">
+    <div class="item1">item1</div>
+    <div class="item2">item2</div>
+    <div class="item3">item3</div>
+  </div>
+
+  <!-- 02 absolute 로 좌표 이동시키기 -->
+  <div class="box">box</div>
+
+  <!-- 03 부모/자식관계 설정,중복순서:z-index -->
+  <div class="box_main">
+    <div class="box1">box1</div>
+    <div class="box2">box2</div>
+    <div class="box3">box3</div>
+  </div>
+  
+  <!-- 04 position 고정값:fixed -->
+  <div class="top">
+    <p>TOP</p>
+  </div>
+
+  <!-- 05 position속성 특징 -->
+  <span class="pos">position속성의 특징</span>
+
+  <!-- 06 position:sticky -->
+  <div class="sticky">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolores, totam, alias omnis iste, incidunt quidem exercitationem libero mollitia cumque aliquid quasi quos aperiam dignissimos iure harum minus sint optio beatae nostrum ullam cum maxime et. Nisi dolore aperiam mollitia veniam fuga, ducimus voluptatem ab esse? Ullam architecto, blanditiis ea quos eligendi explicabo minima deleniti, illum doloribus error voluptatum aliquid. Dolorum esse similique accusamus quos, in iste ut, distinctio itaque aspernatur quam temporibus necessitatibus quibusdam ex odit, ullam a velit at nulla quasi dolore placeat maxime odio sequi! Eveniet, accusantium labore! Quaerat, natus recusandae facere neque eum dolores deserunt commodi?
+    </p>
+    <div class="topfix">
+      <p>Navbar - Sticky top</p>
+    </div>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Reiciendis dolores, totam, alias omnis iste, incidunt quidem exercitationem libero mollitia cumque aliquid quasi quos aperiam dignissimos iure harum minus sint optio beatae nostrum ullam cum maxime et. Nisi dolore aperiam mollitia veniam fuga, ducimus voluptatem ab esse? Ullam architecto, blanditiis ea quos eligendi explicabo minima deleniti, illum doloribus error voluptatum aliquid. Dolorum esse similique accusamus quos, in iste ut, distinctio itaque aspernatur quam temporibus necessitatibus quibusdam ex odit, ullam a velit at nulla quasi dolore placeat maxime odio sequi! Eveniet, accusantium labore! Quaerat, natus recusandae facere neque eum dolores deserunt commodi?
+    </p>
+  </div>
+
+</body>
+</html>

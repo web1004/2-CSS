@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>8-그림자효과</title>
+  <style>
+    body{
+      font-family: arial;
+      background-color: #808080;
+    }
+    .shadow1{
+      font-size: 48px;
+      color: #fff;
+      text-shadow: 10px 10px 10px #000;
+      /*오른쪽거리 아래쪽거리 흐림도 색상*/
+    }
+    .shadow2{
+      font-size: 55px;
+      color: #333;
+      text-shadow: -5px -5px 5px #fff; 
+      /*왼쪽거리 위쪽거리 흐림도 색상*/ 
+    }
+    .shadow3{
+      font-size: 60px;
+      text-shadow:0 0 4px #ccc,
+        0 -5px 4px #ff3,
+        2px -10px 6px #fd3,
+        -2px -15px 11px #f80,
+        2px -19px 18px #f20;
+    }
+
+    div{
+      border: 3px solid #000;
+      background-color: #fff;
+      text-shadow: 5px 2px 5px #f00;
+      box-shadow: 10px 10px 30px #000;
+    }
+    .btn{
+      width: 200px;
+      height: 100px;
+      background-color: blue;
+      border: 1px solid #000;
+      margin: 50px;
+    }
+    #shd1{box-shadow:10px 10px 5px #fff;}
+    #shd2{box-shadow:10px 10px 50px #fff inset;}
+    /*inset:안쪽그림자(box-shadow만 가능)*/ 
+
+    .shd3{
+      width: 300px;
+      height: 200px;
+      border-radius: 30px;
+      border: none;
+      box-shadow: rgba(0, 0, 0, 0.17) 0px -23px 25px 0px inset, rgba(0, 0, 0, 0.15) 0px -36px 30px 0px inset, rgba(0, 0, 0, 0.1) 0px -79px 40px 0px inset, rgba(0, 0, 0, 0.06) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;
+    }
+
+    img{box-shadow: 15px 15px 0 #7ec1ea;}
+  </style>
+</head>
+<body>
+
+  <h1>텍스트 그림자효과:text-shadow</h1>
+  <h2 class="shadow1">Joandora</h2>
+  <h2 class="shadow2">Joandora</h2>
+  <h2 class="shadow3">Joandora</h2>
+
+  <h1>박스 그림자효과:box-shadow</h1>
+  <div><h1>텍스트 또는 박스에 그림자 효과 만들기</h1></div>
+  <div class="btn" id="shd1"></div>
+  <div class="btn" id="shd2"></div>
+
+  <h1>구글소스 이용하기</h1>
+  <div class="shd3"></div>
+
+  <h1>이미지에 그림자효과주기</h1>
+  <img src="image/sky.jpg" alt="">
+
+</body>
+</html>

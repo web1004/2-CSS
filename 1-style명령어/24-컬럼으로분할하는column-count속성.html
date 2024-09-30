@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>24-컬럼으로분할하는column-count속성</title>
+  <style>
+    div{
+      line-height: 26px;
+      column-count: 3;
+      /* column-width: 200px;  ->column-count와 중복사용할수 없음 */
+      column-gap: 40px;
+      /* column-rule-style: solid;
+      column-rule-width: 2px;
+      column-rule-color: crimson */
+      column-rule: 2px solid crimson;
+    }
+    div h1{
+      column-span: all;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>Multi Column Headline Text - Get started...</h1>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis placeat quas consequuntur quasi nostrum, explicabo laborum. Doloremque, blanditiis. Iusto expedita architecto libero pariatur, tempore voluptatibus voluptatum. Repellat nostrum quaerat voluptatum nemo et aut voluptate incidunt praesentium quae, at possimus facere consectetur eius eaque nulla temporibus fugit minus numquam quia cum expedita esse quas modi! Hic totam rem explicabo natus possimus debitis, sunt quod quasi deleniti veniam sequi quis recusandae dignissimos fugit! Aspernatur vitae omnis quos blanditiis ipsum, laudantium dicta nihil, nobis adipisci atque maxime sapiente expedita ipsa delectus nesciunt fugit tempora doloremque magni. Reiciendis harum expedita alias et ullam nobis tempore corporis, atque numquam minus sunt, sapiente quam rem voluptas commodi corrupti exercitationem provident assumenda magni beatae ea. Enim provident inventore numquam veritatis officiis vel eveniet, maiores dicta explicabo voluptatibus consectetur deleniti omnis quasi hic cum expedita! Impedit ex, aperiam ab eos voluptatum voluptas eligendi molestiae quas blanditiis perspiciatis laborum. Enim, consequatur, nisi inventore nulla quod a voluptas ut obcaecati cum ullam repellendus repudiandae exercitationem veniam illo blanditiis animi! Ducimus, officiis at blanditiis et molestiae beatae alias iste aliquid enim, praesentium qui nam quis dicta, explicabo assumenda. Magnam eaque delectus maiores officia quo, obcaecati qui fugit placeat veritatis repudiandae. Nesciunt officia nisi fugiat sunt eum, cupiditate nemo repellendus, aut soluta omnis ratione vitae sint aspernatur. Animi cumque dolorem delectus corporis cum. Eveniet natus corrupti quo, animi beatae voluptatum tempore mollitia qui optio, aliquid provident tempora, deserunt sapiente blanditiis? Nisi perspiciatis provident, similique totam in repellat et ea, ipsum minima ex rem excepturi ipsam sed. Magnam fuga quam dignissimos blanditiis reprehenderit necessitatibus, nisi quia. Mollitia soluta deleniti ipsum quos ratione sequi vero nam error inventore, blanditiis porro ullam accusantium corrupti consectetur quae quas a enim nisi veniam perspiciatis neque doloribus rerum quidem! Aliquam officia ab recusandae maiores, tempora maxime in cupiditate.
+    </p>
+  </div>
+  
+</body>
+</html>
+
+<!-- 
+column-count : 컬럼(세로) 개수 지정
+column-width : 컬럼(세로) 너비 지정
+
+columns	: column-width와 column-count 단축 속성	
+ex)columns: 400px 4; (너비, 컬럼 개수)
+
+column-gap : 컬럼(세로) 사이의 간격
+column-rule-width : 컬럼(세로) 구분선 두께
+column-rule-style : 컬럼(세로) 구분선 스타일
+column-rule-color : 컬럼(세로) 구분선 색상
+column-rule 단축속성 : column-rule:width style color
+
+column-span : all; none은 기본값,컬럼(세로) 병합해서 표현할지 지정
+-->

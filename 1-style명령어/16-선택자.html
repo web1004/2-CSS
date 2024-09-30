@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>16-선택자</title>
+  <style>
+    /* (1)자손후손선택자 */
+    /* #select1 h1{color: red;} 후손선택자(공백하나)-선택자 태그아래에 위치한 모든 태그들*/
+    #select1>h1{color: red;} /* 자손선택자(>)-선택자 바로 한단계 아래(첫번째)에 위치한 태그(서열상의 첫번째) */
+
+    /* (2)구조선택자-형태구조 */
+    #select2 h1:first-of-type{color: purple;}
+    #select2 h2:first-of-type{color: orange;}
+    #select2 h3:first-of-type{color: pink;}
+    #select2 h3:last-of-type{color: green;}
+    #select2 h2:nth-of-type(2){color: yellowgreen;}
+    #select2 h3:nth-of-type(3){color: skyblue;}
+    #select2 h3:nth-last-of-type(2){color: royalblue;}
+
+    /* (3)구조선택자-일반구조 */
+    #select3 ul{overflow: hidden;}
+    #select3 ul li{
+      list-style-type: none;
+      /* display: inline-block; >가로배열은 되지만 오른쪽으로 5px정도의 기본margin이 있음*/
+      float: left;
+      padding: 10px;
+    }
+    #select3 ul li:nth-child(2n){background-color: pink;} /*2,4,6...짝수(even)*/
+    #select3 ul li:nth-child(2n+1){background-color: purple;} /* 1,3,5...홀수(odd)*/
+    #select3 ul li:first-child{border-radius: 15px 0 0 15px;}
+    #select3 ul li:last-child{border-radius: 0 15px 15px 0;}
+  
+    /* (4) 일반과 형태구조선택자의 차이(중요!) 
+    nth-child 일반구조선택자는 부모요소의 모든 자식요소를 대상으로 n번째 자식을 선택하고,
+    nth-of-type 형태구조선택자는 부모요소의 특정 요소만을 대상으로 n번째 자식을 선택한다.
+    */
+    #select4 p:nth-child(3){
+      color: red;
+      font-weight: bold;
+    }
+    #select4 p:nth-of-type(3){
+      color: blue;
+      font-weight: bold;
+    }
+
+    /* (5)가상선택자(가상클래스)-중요!!!
+    ::before ::after는 기본적으로 자식이 되며, inline의 속성을 가지고 있음
+    */
+    .box p{border-bottom: 1px dashed #000;}
+    .box p:first-letter{  /* 첫번째 글자 */
+      font-size: 300%;   /*글자크기 세배*/
+      color: red;
+    }
+    .box:before{
+      content: 'box의 맨 앞에 문장을 삽입한다.';
+      color: green;
+      width: 300px;
+      height: 50px;
+      background-color: yellow;
+      display: inline-block;
+    }
+    .box:after{
+      content: 'box의 맨 뒤에 문장을 삽입한다.';
+      color: #fff;
+      width: 300px;
+      height: 50px;
+      background-color: #000;
+      display: inline-block;
+    }
+
+    /* (6) */
+    .frame{
+      width: 800px;
+      background-color: #000;
+      color: #fff;
+      padding: 20px;
+      margin: auto;
+    }
+    .frame h1{text-align: center;}
+    .frame .greeting:first-letter{
+      color: red;
+      font-size: 40px;
+      float: left;
+      /* vertical-align: bottom; ->적용되지않음 */
+      line-height: 1;
+      /* line-height는 px단위도 사용하고 1,2.5 같은 숫자로 글꼴 크기의 배수를 입력할수 있음
+      줄간격을 줄여서 오른쪽 텍스트와 수직정렬을 맞춤 */
+    }
+
+    /* (7)동위선택자 
+    @ 골뱅이(at sign), & 앰퍼센드(ampersand), ~ 물결(tild), ^ 눈꼬리(caret)
+    */
+    #select7 h1 + h2{color: red;}  /* 인접선택자(plus)->바로 다음에 오는 한개 요소만 선택 */
+    #select7 h1 ~ h2{background-color: yellow;}  /* 형제선택자(tild) ->다음에 오는 요소 모두 선택*/
+
+    /* (8)속성선택자 */
+    input{
+      border: 1px solid #ccc;
+      width: 200px;
+      height: 30px;
+    }
+    input[type=text]{background-color: bisque;}
+    input[type=password]{background-color: gold;}
+
+    .frame1 h1[class=text]{color: red;}  /* 클래스 이름이 "text" 와 동일한것 */
+    .frame1 [class*=text]{color: green;}  /* 클래스 이름중에 "text"가 포함된것 */
+
+    /* (9)not선택자 */
+    #select9 p:not(.active){ /* active클래스를 제외한 나머지 p에 적용 */
+      font-size: 32px;
+      color: red;
+    }
+
+    #select9 ul li{
+      list-style-type: none;
+      display: inline-block;
+      padding: 0 20px;
+      /* border-left: 2px solid red; */
+    }
+    /* #select9 ul li:first-child{border-left: none;} */
+    #select9 ul li:not(:first-child){border-left: 2px solid crimson;}
+
+    /* (10) 00 ~ 00 범위 지정하기
+    형식: nth-child(n+k):nth-child(-n+m)
+    예)nth-child(n+4):nth-child(-n+8) -> 4번째에서 8번째
+    */
+
+    /* ~5번째까지 */
+    #select10 ul li:nth-child(-n+5){
+      color: orange;
+      background-color: lightyellow;
+    }
+
+    /* 6번째~10번째까지 */
+    #select10 ul li:nth-child(n+6):nth-child(-n+10){
+      color: purple;
+      background-color: pink;
+    }
+
+    /* 11번째부터 ~ */
+    #select10 ul li:nth-child(n+11){
+      color: blue;
+      background-color: skyblue;
+    }
+
+    /* (11) 선택자 중복을 줄이는 is 가상클래스 */
+    /* header h1, section h1, footer h1{
+      width: 400px;
+      font-size: 36px;
+      border-bottom: 2px solid yellowgreen;
+    } */
+
+    :is(header, section, footer) h1{
+      width: 400px;
+      font-size: 36px;
+      border-bottom: 2px solid yellowgreen;
+    }
+    :is(header, section, footer) h1:before{
+      content: '';
+      display: inline-block; /* 가상클래스는  inline태그임*/
+      width: 10px;
+      height: 30px;
+      background-color: crimson;
+      border-radius: 35px;
+      margin-right: 10px;
+    }
+
+    /* (12)선택자를 포함(has)하는 경우를 선택함 :has(선택자) */
+    #select12 {
+      width: 400px;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 20px;
+    }
+    #select12  ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    #select12  ul li {
+      border: 2px solid #000;
+      border-radius: 5px;
+      margin: 10px 0;
+      padding: 15px;
+    }
+    #select12  ul li input[type=radio]:checked {
+      accent-color: crimson;
+    }
+    #select12  li:has(input[type=radio]:checked) {
+      border-color: crimson;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>(1)자손후손선택자</h1>
+  <div id="select1">
+    <h1>Lorem ipsum</h1>
+    <h1>Lorem ipsum</h1>
+    <div id="nav">
+      <h1>Navigation</h1>
+      <h1>Navigation</h1>
+      <h1>Navigation</h1>
+    </div>
+  </div>
+  <hr>
+
+  <h1>(2)형태구조 선택자</h1>
+  <div id="select2">
+    <h1>Hedaer-1</h1>
+    <h1>Hedaer-1</h1>
+    <h2>Hedaer-2</h2>
+    <h2>Hedaer-2</h2>
+    <h2>Hedaer-2</h2>
+    <h3>Hedaer-3</h3>
+    <h3>Hedaer-3</h3>
+    <h3>Hedaer-3</h3>
+    <h3>Hedaer-3</h3>
+    <h3>Hedaer-3</h3>
+    <h2>Hedaer-2</h2>
+    <h1>Hedaer-1</h1>
+  </div>
+
+  <h1>(3)일반구조 선택자</h1>
+  <div id="select3">
+    <ul>
+      <li>일요일</li>
+      <li>월요일</li>
+      <li>화요일</li>
+      <li>수요일</li>
+      <li>목요일</li>
+      <li>금요일</li>
+      <li>토요일</li>
+    </ul>
+  </div>
+
+  <h1>(4)일반과 형태구조선택자의 차이</h1>
+  <div id="select4">
+    <p>구조선택자</p>
+    <span></span>
+    <p>구조선택자</p> <!-- p:nth-child(3)일반구조 ->중간에 있는 <span>까지 포함해서 3번째임-->
+    <p>구조선택자</p> <!-- p:nth-of-type(3)형태구조 ->선택된 <p>중에서 3번째임-->
+  </div>
+  <hr>
+
+  <h1>(5)가상클래스</h1>
+  <div class="box">
+    <p>COMPANY</p>
+    <p>PRODUCT</p>
+    <p>SERVICE</p>
+  </div>
+  <hr> 
+
+  <h1>(6)첫글자에 스타일적용:first-letter</h1>
+  <div class="frame">
+    <h1>Netflix 인기 한국 드라마</h1>
+    <p class="greeting">
+      강렬한 재미와 긴장감, 로맨스와 서스펜스가 넘치는 한국 드라마의 세계로 여러분을 초대합니다. 웃어도 되고 울어도 되고, 비명을 질러도 됩니다. 마음껏 즐기세요.
+    </p>
+  </div>
+  <hr>
+
+  <h1>(7)인접선택자(동위선택자)~,+</h1>
+  <div id="select7">
+    <h1>Header - 1</h1>
+    <h2>Header - 2</h2>
+    <h2>Header - 2</h2>
+    <h2>Header - 2</h2>
+    <h2>Header - 2</h2>
+    <h3>Header - 3</h3>
+    <h2>Header - 2</h2>
+  </div>
+  <hr>
+
+  <h1>(8)속성선택자:선택자[속성=값]</h1>
+  <form>
+    <input type="text" placeholder="Enter ID">
+    <input type="password" placeholder="Enter Password">
+  </form>
+
+  <h1>다양한 속성선택자</h1>
+  <div class="frame1">
+    <h1 class="text">H1 Heading</h1>
+    <h2 class="text center">H2 Heading</h2>
+    <h3 class="text-center">H3 Heading</h3>
+    <h3 class="center-test">H3 Heading</h3> 
+    <h4 class="center text">H4 Heading</h4>
+    <h1 class="test">H1 Heading</h1>
+  </div>
+  <hr>
+
+  <h1>(9)특정선택자를 제외하는 :not</h1>
+  <div id="select9">
+    <p>EZEN Academy</p>
+    <p class="active">HTML5 + CSS3 + JS</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
+    <ul>
+      <li>Item1</li>
+      <li>Item2</li>
+      <li>Item3</li>
+      <li>Item4</li>
+      <li>Item5</li>
+    </ul>
+  </div>
+
+  <h1>(10)00~00까지 범위 지정하기</h1>
+  <div id="select10">
+    <ul>
+      <li>강남캠퍼스</li>
+      <li>종로캠퍼스</li>
+      <li>신촌캠퍼스</li>
+      <li>노원캠퍼스</li>
+      <li>상봉캠퍼스</li>
+      <li>대림캠퍼스</li>
+      <li>안양캠퍼스</li>
+      <li>의정부캠퍼스</li>
+      <li>구리캠퍼스</li>
+      <li>성남캠퍼스</li>
+      <li>일산캠퍼스</li>
+      <li>대전캠퍼스</li>
+      <li>진주캠퍼스</li>
+      <li>인천캠퍼스</li>
+    </ul>
+  </div>
+  <hr>
+
+  <h1>(11)선택자 중복을 줄이는 :is</h1>
+  <div id="select11">
+    <header>
+      <h1>Headline in header</h1>
+    </header>
+    <section>
+      <h1>Headline in section</h1>
+    </section>
+    <footer>
+      <h1>Headline in footer</h1>
+    </footer>
+    <h1>Heading</h1>
+    <h1>Heading</h1>
+    <h1>Heading</h1>
+  </div>
+
+  <h1>(12)선택자를 포함(has)하는 경우를 선택함 :has(선택자) </h1>
+  <div id="select12">
+    <h2>어떻게 가입하셨나요?</h2>
+    <ul>
+      <li><input type="radio" name="path"> 구글</li>
+      <li><input type="radio" name="path"> 페이스북</li>
+      <li><input type="radio" name="path"> 지인소개</li>
+    </ul>
+  </div>
+
+</body>
+</html>
