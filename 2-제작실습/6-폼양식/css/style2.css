@@ -1,0 +1,52 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+  font-family: 'Montserrat', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.item{
+  /* border: 1px solid red; */
+  width: 300px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.item input{
+  border: 1px solid lightgrey;
+  width: inherit;
+  height: 40px;
+  border-radius: 5px;
+  outline: none;
+  padding-left: 50px;
+  box-sizing: border-box;
+  transition: 0.3s;
+}
+.item .fa-solid{
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: gray;
+  font-size: 24px;
+  color: #fff;
+  width: 40px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  text-align: center;
+  line-height: 40px;
+  transition: 0.3s;
+}
+
+/* Focus Effect */
+.item input:focus{
+  border: 1px solid dodgerblue;
+  box-shadow: 0 0 5px dodgerblue;
+}
+.item input:focus+.fa-solid{
+  background-color: dodgerblue;
+  color: navy;
+}
+.item input:focus::placeholder{opacity: 0;}

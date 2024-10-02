@@ -1,0 +1,78 @@
+@import url(reset.css);
+@import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap");
+* {
+	font-family: "Montserrat", sans-serif;
+	box-sizing: border-box;
+}
+
+body {
+  margin: 20px;
+  line-height: 1.5em;
+  color: #999;
+  background-color: #222;
+}
+hr{margin: 30px 0;}
+
+/* 01 */
+.list1 {
+  counter-reset: num;
+  /*list-style: decimal-leading-zero*/
+}
+.list1 li:before {
+  counter-increment: num;
+  /* content: counter(num, upper-alpha) "."; */
+  content: counter(num, decimal-leading-zero) ".";
+  display: inline-block;
+  margin-right: 10px;
+}
+.list1 li:hover {
+  color: #fff;
+}
+
+/* 02 */
+.list2 li:before {
+  content: '\e669';
+  font-family: 'Material Symbols Outlined';
+  display: inline-block;
+  margin-right: 15px;
+  transform: translateY(3px);;
+}
+.list2 li,
+.list2 li:before {
+  transition: 0.35s;
+}
+.list2 li:hover {
+  color: #fff;
+}
+.list2 li:hover:before {
+  transform: scale(2);
+  text-shadow: 0 0 5px;
+}
+
+/* 03 */
+.list3{margin-left: 100px;}
+.list3 li {position: relative;}
+.list3 li:before {
+  content: '';
+  /*display: inline-block;*/
+  margin-right: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: #999;
+  border-radius: 10px 10px 10px 10px;
+  position: absolute;
+  top: 8px;
+  right: 100%;
+}
+.list3 li,
+.list3 li:before {
+  transition: 0.35s;
+}
+.list3 li:hover {
+  color: #fff;
+  color: crimson;
+}
+.list3 li:hover:before {
+  width: 30px;
+  background-color: crimson;
+}

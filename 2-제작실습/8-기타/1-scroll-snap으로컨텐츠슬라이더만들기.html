@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500&display=swap");
+
+    * {
+      font-family: "Montserrat", sans-serif;
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #eee;
+    }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .card-frame {
+      /* border: 1px solid #000; */
+      width: 300px;
+      display: flex;
+      gap: 30px;
+      /* overflow-y: hidden; */
+      overflow-x: scroll;
+      scroll-snap-type: x mandatory;  /* 부모요소에 적용 */
+    }
+    .card-frame .card {
+      scroll-snap-align: center;  /* 자식요소에 적용 */
+      width: inherit;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 20px;
+    }
+
+    /* mandatory : 의무적인
+      proximity : 가까움,접근
+
+      overflow-x: scroll == overflow-y: hidden;  
+    */
+
+  </style>
+</head>
+<body>
+  
+  <div class="card-frame">
+    <div class="card">
+      <h3>Product #01</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi necessitatibus, aut et fuga modi perspiciatis. Non, veritatis itaque et perferendis iusto provident commodi autem officia quas voluptatibus molestias consectetur saepe?
+      </p>
+      <img src="image/product-01.jpg">
+    </div>
+    <div class="card">
+      <h3>Product #02</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi necessitatibus, aut et fuga modi perspiciatis. Non, veritatis itaque et perferendis iusto provident commodi autem officia quas voluptatibus molestias consectetur saepe?
+      </p>
+      <img src="image/product-02.jpg">
+    </div>
+    <div class="card">
+      <h3>Product #03</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi necessitatibus, aut et fuga modi perspiciatis. Non, veritatis itaque et perferendis iusto provident commodi autem officia quas voluptatibus molestias consectetur saepe?
+      </p>
+      <img src="image/product-03.jpg">
+    </div>
+    <div class="card">
+      <h3>Product #04</h3>
+      <p>
+        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nisi necessitatibus, aut et fuga modi perspiciatis. Non, veritatis itaque et perferendis iusto provident commodi autem officia quas voluptatibus molestias consectetur saepe?
+      </p>
+      <img src="image/product-04.jpg">
+    </div>
+  </div>
+
+</body>
+</html>
+
+<!-- 
+mandatory : 의무적인
+proximity : 가까움,접근
+
+overflow-x: scroll == overflow-y: hidden; 
+-->

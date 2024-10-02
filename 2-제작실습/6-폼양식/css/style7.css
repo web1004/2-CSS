@@ -1,0 +1,89 @@
+@import url(reset.css);
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+:root {
+	--whiteColor: #fff;
+	--blackolor: #000;
+	--mainColor: #aaa;
+	--validColor: #2ecc71;
+	--invalidColor: #e74c3c;
+}
+
+* {
+	font-family: "Montserrat", sans-serif;
+	box-sizing: border-box;
+}
+body {
+	font-size: 15px;
+	line-height: 1.5em;
+	color: #fff;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 100vh;
+	background: linear-gradient(150deg, rgba(15, 52, 93, 1), rgba(50, 113, 177, 1))
+}
+
+.login {width: 350px;}
+.login header {text-align: center;}
+.login header img {width: 150px;}
+.login header h2{margin-top: 20px;}
+.login header p {color: var(--mainColor);}
+.login header p a {color: var(--whiteColor);}
+.login header p a:hover {text-decoration: underline;}
+
+
+.login .login-box input,
+.login .login-box button[type=submit] {
+	display: block;
+	width: 100%;
+	margin: 15px 0;
+	background-color: transparent;
+	/* border: none; */
+	outline: none;
+	border: 1px solid var(--mainColor);
+	padding: 13px;
+	border-radius: 50px;
+	text-align: center;
+	color: var(--whiteColor);
+}
+.login .login-box button[type=submit] {
+	border: none;
+	background-color: var(--blackolor);
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.login .login-box p {
+	text-align: center;
+	color: var(--invalidColor);
+	font-size: 14px;
+	display: none;
+}
+
+/* Validation Check */
+/* 메일주소형식(@입력)과  비밀번호(6자리이상)가 유효하지않은 상태일때는 빨강색체크이미지가 뜨게 함*/
+.login .login-box input:invalid:not(:placeholder-shown) {
+	border-color: var(--invalidColor);
+	background: url('../image/check-invalid.png') no-repeat center right 20px;
+}
+
+/* 메일주소형식(@입력)과  비밀번호(6자리이상)가 유효한 상태일때는 빨강색체크이미지가 뜨게 함*/
+.login .login-box input:valid:not(:placeholder-shown) {
+	background: url('../image/check-valid.png') no-repeat center right 20px;
+}
+
+/* 비밀번호가 유효하지 않은 상태(6자리이하일때)일때 경고글자 나타나게 함 */
+.login .login-box input[type=password]:invalid:not(:placeholder-shown) + p {
+	display: block;
+}
+/* input 값이 정상으로 입력되지 않았을때(유효하지 않은상태) 버튼을 흐리게  */
+.login .login-box input:invalid ~ button[type=submit] {
+	opacity: 0.5;
+	pointer-events: none;
+}
+/* input요소에 클릭했을때 placeholder 글자 사라지게 */
+.login .login-box input:focus::placeholder {
+	/* visibility: hidden; */
+	opacity: 0;
+}

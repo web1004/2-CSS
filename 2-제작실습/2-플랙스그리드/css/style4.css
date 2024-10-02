@@ -10,27 +10,32 @@ body{
 	color: #222;
 }
 
+@font-face {
+  font-family: 'HakgyoansimChilpanjiugaeTTF-B';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimChilpanjiugaeTTF-B.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 section{
   /* border: 1px solid #000; */
-  background-color: #48494B;
   height: 400px;
   margin-top: 100px;
 }
 .section-inner{
   /* border: 1px solid red; */
-  width: 1600px;
+  /* width: 1600px; */
   margin: auto;
   display: flex;
   height: 400px;
 }
 .section-inner:hover .photo img{
-  transform: scale(1.2);
-  filter: grayscale(100%);
+  transform: scale(1.1);
+  /* filter: grayscale(100%); */
 }
 
 .photo{
-  /* width: 700px; */
-  flex-basis: 700px;
+  flex: 1;
   height: inherit;
   overflow: hidden;
 }
@@ -44,20 +49,24 @@ section{
 .promotion{
   flex: 1;
   position: relative;
-  background-color: #48494B;
+  background-color: #46515c;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .banner-logo {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 30px;
+	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
   position: absolute;
-  left: -100px;
+  left: -110px;
   top: 50%;
   transform: translateY(-50%);
 }
 .banner-logo img {
 	border-radius: 10px;
-	box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+
 }
 
 .heading{
@@ -69,9 +78,9 @@ section{
   padding-left: 100px;
 }
 .heading h1{
-  font-family: 'Raleway', sans-serif; 
+  font-family: 'HakgyoansimChilpanjiugaeTTF-B';
   text-transform: capitalize;
-  font-size: 32px;
+  font-size: 40px;
   font-weight: 600;
 }
 .heading p{margin: 10px 0;}
@@ -96,5 +105,5 @@ section{
   transition: 0.5s;
 }
 .heading a.btn-event:hover{
-  background-color: navy;
+  background-color: #e95f0e;
 }
