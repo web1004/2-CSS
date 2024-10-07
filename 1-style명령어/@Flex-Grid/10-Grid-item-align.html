@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>10-Grid-item-align</title>
+  <style>
+    *{  
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container{
+      display: grid;
+      grid-template-columns: 100px 200px 300px;
+      grid-template-rows: 100px 100px;
+    }
+    .box2{
+      /* justify-self: center;
+      align-self: center; */
+      place-self: center end; /*align-self  justify-self */
+    }
+
+    .container .item:nth-child(1){background-color: orange;}
+    .container .item:nth-child(2){background-color: pink;}
+    .container .item:nth-child(3){background-color: skyblue;}
+    .container .item:nth-child(4){background-color: yellowgreen;}
+    .container .item:nth-child(5){background-color: gold;}
+    .container .item:nth-child(6){background-color: royalblue;}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="item box1">1</div>
+    <div class="item box2">2</div>
+    <div class="item box3">3</div>
+    <div class="item box4">4</div>
+    <div class="item box5">5</div>
+    <div class="item box6">6</div>
+  </div>
+  
+</body>
+</html>
+
+<!-- *그리드 자식에게 적용하는 속성들....
+grid-column-start:칼럼 시작번호
+grid-column-end:칼럼 끝번호
+grid-column:칼럼시작/끝번호(축약형)
+
+grid-row-start:줄 시작번호
+grid-row-end:줄 끝번호
+grid-row:줄 시작/끝 번호(축약형)
+-->

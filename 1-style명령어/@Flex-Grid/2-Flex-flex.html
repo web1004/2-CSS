@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>2-Flex-flex</title>
+  <style> 
+    /* flex-basis : 공간을 분배하기 전에 아이템이 기본적으로 가지는 크기를 지정한다.
+    메인축의 방향이 가로일때는 가로크기를 지정
+    메인축의 방향이 세로일때는 세로크기를 지정
+
+    아이템이 나타낼때 최소의 크기를 지정하는 것이다.
+    레이아웃을 구성할때 내용과 상관없이 width,height 로 사이즈를 고정해버릴것인지
+    flex-basis로 유동적인 사이즈를 가지게 할것인지 상황에 따라 정해서 사용하면 된다.
+    */
+
+    .container1{
+      display: flex;
+      height: 200px;
+    }
+    .item1{
+      flex-basis: 100px;   /* 메인축이 가로방향이기 때문에 가로가 100px이 될거고, 세로는 기본값인 stretch */
+    }
+    
+    .box1{background-color: orange;}
+    .box2{background-color: skyblue;}
+    .box3{background-color: yellowgreen;}
+
+    /*flex-grow : 아이템의 크기가  flex-basis로 지정된 기본크기에서 얼마나 늘어날수 있는지를 지정하는 속성이다.
+    flex-grow속성은 늘어날 비율을 나타내는 0 이상의 숫자를 값으로 가지고 0이 기본값이다.(0은 늘어나지 않음을 의미함) 
+    지금 오른쪽에 여백이 있는데도 늘어나지 않는 이유는 flex-grow이 기본값이 늘어나지 않는 0이기 때문, 만약 0이상의 숫자를 가지게 된다면  flex-basis로 지정된 크기를 제외한 남는 공간을 flex-grow에 지정된 숫자의 비율로 분배하게 된다.    
+    */
+    .container2{
+      display: flex;
+      height: 200px;
+    }
+    .item2{
+      flex-basis: 100px; 
+      /* flex-grow: 1;  */
+    }
+    /* .container2 .box1{flex-grow: 1;} */
+    .container2 .box2{flex-grow: 2;}  /* 2번은 기본값으로 나머지 1,3번만 분배  */
+    /* .container2 .box3{flex-grow: 3;} */
+
+    /* flex-shrink : 아이템의 크기가  flex-basis로 지정된 기본크기에서 얼마나 줄어들수 있는지를 지정하는 속성이다.
+    flex-shrink속성은 줄어들 비율을 나타내는 0 이상의 숫자를 값으로 가지고 1이 기본값이다.(1은 줄어들수 있다는것을 의미하고 0은 줄어들수 없다는걸 의미함) */
+    .container3{
+      display: flex;
+      height: 200px;
+    }
+    .item3{
+      flex-basis: 400px; 
+        /* flex-shrink: 0; ->줄어들지않음*/
+    }
+    .container3 .box1{flex-shrink: 0;}
+    /* .container3 .box2{flex-shrink: 0;}
+    .container3 .box3{flex-shrink: 0;} */
+
+    /* flex : flex-grow,flex-shrink,flex-basis 의 단축속성(중요!!) */
+    .container4{
+      display: flex;
+      height: 200px;
+    }
+    .item4{
+      /* flex: 1 0 100px; ->grow 1이니까 1:1:1의 비율로 늘어나게 되고, shrink 0 이니까 기본너비 이하로 줄지 않음*/
+      /* flex: 1 auto; */
+      /* flex: 1; ->grow는 1이고, 생략된 부분은 shrink 1 basis 0*/
+    }
+    .container4 .box1{flex: 1;}
+    .container4 .box2{flex: 5;}
+    .container4 .box3{flex: 2;}
+
+
+    /* order */
+    .container5{
+      display: flex;
+      height: 200px;
+    }
+    .container5 .box1{order: 3;}
+    .container5 .box2{order: 2;}
+    .container5 .box3{order: 1;}
+  </style>
+</head>
+<body>
+
+  <h2>flex-basis</h2>
+  <div class="container1">
+    <!-- <div class="item1 box1">1번 박스</div>
+    <div class="item1 box2">2번 박스</div>
+    <div class="item1 box3">3번 박스</div> -->
+    <div class="item1 box1">sdfsadfdasfdsafdsaf</div>
+    <div class="item1 box2">asfsdafd</div>
+    <div class="item1 box3">fdsfasdfasdfssas</div>
+  </div>
+
+  <h2>flex-grow</h2>
+  <div class="container2">
+    <div class="item2 box1">1번 박스</div>
+    <div class="item2 box2">2번 박스</div>
+    <div class="item2 box3">3번 박스</div>
+  </div>
+
+  <h2>flex-shrink</h2>
+  <div class="container3">
+    <div class="item3 box1">1번 박스</div>
+    <div class="item3 box2">2번 박스</div>
+    <div class="item3 box3">3번 박스</div>
+  </div>
+
+  <h2>flex</h2>
+  <div class="container4">
+    <div class="item4 box1">1번 박스</div>
+    <div class="item4 box2">2번 박스</div>
+    <div class="item4 box3">3번 박스</div>
+  </div>
+
+  <h2>order</h2>
+  <div class="container5">
+    <div class="item5 box1">1번 박스</div>
+    <div class="item5 box2">2번 박스</div>
+    <div class="item5 box3">3번 박스</div>
+  </div>
+
+</body>
+</html>

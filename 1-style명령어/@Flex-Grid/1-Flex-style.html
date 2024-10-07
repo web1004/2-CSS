@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>1-Flex-style</title>
+  <style>
+    /* float를 이용한 배치 */
+    .container1{
+      background-color: #eee;
+      border: 1px solid #222;
+      overflow: hidden;
+    }
+    .container1 .box{float: left;}
+
+    /* 공통으로 들어가는 부분 */
+    .con{
+      background-color: #eee;
+      border: 1px solid #222;
+      margin-bottom: 10px;
+      display: flex;
+    }
+    .conh{
+      height: 300px;
+      background-color: #eee;
+      border: 1px solid #222;
+      margin-bottom: 10px;
+      display: flex;
+    }
+    .box{
+      background-color: #222;
+      color: #fff;
+      width: 100px;
+      font-weight: bold;
+      margin: 5px;
+      padding: 20px;
+      text-align: center;
+    }
+
+
+    /* ////// Flex Container(부모)에 적용하는 속성들 */
+    .container11{display: flex;}
+    .container12{display: inline-flex;}
+
+    /* flex-direction(메인축의 방향을 결정) */
+    .container21{flex-direction: row;} /* 박스를 왼쪽에서 오른쪽으로 배치(기본값) */
+    .container22{flex-direction: row-reverse;}  /* 박스를 오른쪽에서 왼쪽으로 배치 */
+    .container23{flex-direction: column;}  /* 박스를 위에서 아래로 배치 */
+    .container24{flex-direction: column-reverse;}  /* 박스를 아래에서 위로 배치 */
+
+    /* flex-wrap */
+    .container31{flex-wrap:nowrap;} /* 박스를 한줄에 배치하며 기본값이다.(줄바꿈을 하지않는다. 넘치면 그냥 빠져나간다.) */
+    .container32{flex-wrap:wrap;} /* 박스를 여러줄로 배치한다.(줄바꿈을 한다.) */
+    .container33{flex-wrap:wrap-reverse;} /* 박스를 여러줄로 배치하되 역방향으로 배치한다.(줄바꿈을 하는데 역순으로 배치한다.) */
+
+    /* flex-flow (flex-direction + flex-wrap)*/
+    .container41{flex-flow:row wrap;} /*왼쪽에서 오른쪽으로 배치, 줄바꿈 */
+    .container42{flex-flow:row nowrap;}  /* 왼쪽에서 오른쪽으로 배치, 줄바꿈안하고 넘침*/
+
+    /* justify-content(중요) */
+    .container51{justify-content:flex-start;} /*아이템들을 시작점으로 정렬 */
+    .container52{justify-content:flex-end;}  /* 아이템들을 끝점으로 정렬 */
+    .container53{justify-content:center;} /*아이템들을 가운데로 정렬 */
+    .container54{justify-content:space-between;}  /* 마지막 박스는 양쪽 끝으로 붙이고, 아이템들의 “사이(between)”에 균일한 간격 만든다. */
+    .container55{justify-content:space-around;} /*아이템들의 “둘레(around)-양쪽 끝에 있는 박스의 양옆”에 균일한 간격을 만들어준다. */
+    .container56{justify-content:space-evenly;} /*모두 똑같은 간격*/
+
+    /* align-items(중요) ->높이값이 있어야 함 */
+    .container61{align-items:stretch;} /*(기본값)아이템들이 수직축 방향으로 끝까지 쭈욱 늘어난다. */
+    .container62{align-items:flex-start;}  /*아이템들을 시작점으로 정렬 */
+    .container63{align-items:flex-end;} /*아이템들을 끝으로 정렬 */
+    .container64{align-items:center;}  /*아이템들을 가운데로 정렬 */
+
+    /* align-content(여러줄일때 적용됨) */
+    .conhh{
+      width: 400px;
+      height: 300px;
+      background-color: #eee;
+      border: 1px solid #222;
+      margin-bottom: 10px;
+      display: flex;
+      flex-flow:row wrap; /* 여러줄일때 적용가능하기 때문에 nowrap이 아닌 wrap으로 설정함 */
+    }
+    .container71{align-content:stretch;} /*(기본값)아이템들이 수직축 방향으로 끝까지 쭈욱 늘어난다. */
+    .container72{align-content:flex-start;}  /* 아이템들을 시작점으로 정렬 */
+    .container73{align-content:flex-end;} /*아이템들을 끝으로 정렬 */
+    .container74{align-content:center;}  /* 아이템들을 가운데로 정렬 */
+    .container75{align-content:space-between;} /*시작item은 시작점에, 마지막 item는 끝점에 정렬되고 나머지 items는 사이에 고르게 정렬 */
+    .container76{align-content:space-around;} /*items를 균등한 여백을 포함하여 정렬 */
+
+
+    /* ////// Flex Item(자식)에 적용하는 속성들 */
+
+    /* align-self */
+    .box1{align-self:auto;} /*기본값*/
+    .box2{align-self:stretch;} /* Container의 교차 축을 채우기 위해 Item을 늘림	 */
+    .box3{align-self:flex-start;}  /* Item을 각 줄의 시작점으로 정렬 */
+    .box4{align-self:flex-end;}  /* Item을 각 줄의 끝점으로 정렬 */
+    .box5{align-self:center;} /* Item을 가운데 정렬 */
+  
+  </style>
+</head>
+<body>
+
+  <h1>Flexible Box</h1>
+  <h2>Float를 이용한 레이아웃 구성</h2>
+  <div class="container1">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <!-- (1)~(7) 부모박스인 Flex Container 에 적용하는 속성들 -->
+  <h2>(1)Flexible Box를 이용한 레이아웃 구성(display:flex 와 display:inline-flex의 차이)</h2>
+  <div class="con container11">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+  <div class="con container12">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>(2)flex-direction:아이템들이 배치되는 축의 방향을 결정(메인축의 방향을 가로로 할지 세로로 할지....)</h2>
+  <div class="con container21">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+  <div class="con container22">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+  <div class="con container23">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+  <div class="con container24">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+  </div>
+
+  <h2>(3)flex-wrap:컨테이너가 더 이상 아이템들을 한 줄에 담을 여유 공간이 없을 때 아이템 줄바꿈을 어떻게 할지 결정하는 속성</h2>
+  <div class="con container31">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+  <div class="con container32">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+  <div class="con container33">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+
+  <h2>(4)flex-flow:flex-direction과 flex-wrap을 한꺼번에 지정할 수 있는 단축 속성(flex-direction, flex-wrap의 순으로 한 칸 떼고 작성)</h2>
+  <div class="con container41">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+  <div class="con container42">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+    <div class="box">5</div>
+    <div class="box">6</div>
+  </div>
+
+  <h2>(5)justify-content:메인축 방향정렬</h2>
+  <div class="con container51">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="con container52">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="con container53">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="con container54">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="con container55">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="con container56">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+
+  <h2>(6)align-items:수직축 방향 정렬</h2>
+  <div class="conh container61">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conh container62">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conh container63">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conh container64">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+
+  <h2>(7)align-content:교차축의 정렬방법으로  "flex-wrap: wrap;" 속성을 통해 items가 여러줄(2줄이상)이고 
+    여백이 있을 경우만 사용할 수 있다.</h2>
+  <div class="conhh container71">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conhh container72">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conhh container73">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conhh container74">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conhh container75">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+  <div class="conhh container76">
+    <div class="box">1</div>
+    <div class="box">2</div>
+    <div class="box">3</div>
+    <div class="box">4</div>
+  </div>
+
+  <!-- (8) 자식박스인 Flex Item에 적용하는 속성들 -->
+  <h2>(8)align-self:해당 아이템의 수직축 방향 정렬(기본값은 auto,align-items 보다 우선순위가높음)</h2>
+  <div class="conh container8">
+    <div class="box box1">1</div>
+    <div class="box box2">2</div>
+    <div class="box box3">3</div>
+    <div class="box box4">4</div>
+    <div class="box box5">5</div>
+  </div>
+
+</body>
+</html>

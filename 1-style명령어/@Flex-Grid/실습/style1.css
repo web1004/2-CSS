@@ -1,0 +1,66 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@400;700;800&display=swap');
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body{
+  font-family: 'Nanum Myeongjo', serif;
+  display: flex;
+  justify-content: center;
+  background-color: #e5e5e5;
+}
+
+.container{width: 800px;}
+
+header{
+  display: flex;
+  justify-content: space-between;
+  height: 100px;
+  align-items: center;
+  padding: 0 30px;
+}
+header h1{text-transform: capitalize;}
+
+ul{
+  display: flex;
+  list-style-type: none;
+  column-gap: 15px;
+}
+ul li a{
+  color: #444;
+  text-decoration: none;
+}
+
+
+main{
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+img{
+  width: 100%;
+  height: auto;
+}
+article{
+  background-color: #fff;
+  box-shadow: 3px 5px 15px rgba(0,0,0,0.2);
+  padding: 15px;
+
+}
+article:first-child{
+  grid-column: span 3;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 30px;
+  font-size: 250%;
+  font-weight: bold;
+}
+article:nth-child(2){
+  /* grid-column: span 2;
+  grid-row: span 2;  */
+  grid-area: span 2/span 2; /* 행/열 */
+  font-size: 200%;
+}

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>4-Grid-template-gap</title>
+  <style>
+    *{  /* *표시는 모든 태그를 말함 */
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    .container{
+      height: 100vh;
+      display: grid;
+      /* grid-template-columns: 50px 150px 300px;
+      grid-template-rows: 100px 300px;    */
+      grid-template-columns: 1fr 3fr 6fr;
+      grid-template-rows: 1fr 3fr;
+      /* column-gap: 10px;
+      row-gap: 30px; */
+     /*  gap: 30px 10px */; /* 행 열 */
+      gap: 30px;
+    }
+
+    .container .item:nth-child(1){background-color: orange;}
+    .container .item:nth-child(2){background-color: pink;}
+    .container .item:nth-child(3){background-color: skyblue;}
+    .container .item:nth-child(4){background-color: yellowgreen;}
+    .container .item:nth-child(5){background-color: gold;}
+    .container .item:nth-child(6){background-color: royalblue;}
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="item">1</div>
+    <div class="item">2</div>
+    <div class="item">3</div>
+    <div class="item">4</div>
+    <div class="item">5</div>
+    <div class="item">6</div>
+  </div>
+  
+</body>
+</html>
+
+<!-- 
+플렉서블박스에서는 플렉스 아이템을 배치할때 가로나 세로 중 하나를 주축으로 정해놓고 배치한다.
+반면에 그리드 레이아웃에서는 그리드 항목을 배치할때 가로와 세로를 모두 사용한다.
+
+*그리드 부모에게 적용하는 속성들....
+display: grid; 컨테이너의 width는 100%가 된다.
+display: inline-grid; 컨테이너 내부의 콘텐츠 넓이만큼 컨테이너의 넓이가 된다.
+
+grid-template-columns: px를 사용하면 고정되기 때문에 반응형웹에 맞게 하기 위해 상대적인 크기를 지정할수 있도록 fr(Fraction)단위를 사용한다.
+
+grid-column-gap:칼럼과 칼럼사이의 간격
+grid-row-gap:줄과 줄사이의 간격
+grid-gap:칼럼과 줄 사이의 간격을 한꺼번에 지정
+-->

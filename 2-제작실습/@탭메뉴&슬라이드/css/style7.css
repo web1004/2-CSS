@@ -1,0 +1,77 @@
+@import url(common.css);
+@import url('https://fonts.googleapis.com/css2?family=Raleway:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+body{
+  font-family: 'Raleway', sans-serif;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+  color: #222;
+  line-height: 25px;
+}
+
+.tab-inner{height: 500px;}
+.tab-inner h1{
+  text-align: center;
+  font-size: 40px;
+  font-weight: normal;
+}
+
+input[name=tabmenu]{display: none;}
+.tab{   /* 슬라이드 보이는 영역 */
+  /* border: 1px solid red; */
+  position: relative;
+  width: 800px;
+  height: 400px;
+  overflow: hidden;
+}
+.items{  /* 슬라이드영역 */
+  /* width: 2400px; */ /* 세로방향일때는 전체폭이 필요없음 */
+  position: absolute;
+  top: 0;
+  left: 0;
+  text-align: center;
+  /* display: flex; */
+  transition: 0.5s;
+}
+.items .item{
+  /* border: 1px solid blue; */
+  width: 800px;
+  height: 400px;
+  padding: 50px;
+  box-sizing: border-box;
+}
+.items .item img{
+  width: 100px;
+  border-radius: 50%;
+}
+.items .item p strong{
+  display: block;
+  margin-top: 15px;
+}
+.items .item p span{
+  color: orange;
+  font-weight: bold;
+}
+
+.btn{text-align: center;}
+.btn label{
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-color: lightgray; 
+  cursor: pointer;
+}
+
+input[id=tab1]:checked ~ .btn label[for=tab1],
+input[id=tab2]:checked ~ .btn label[for=tab2],
+input[id=tab3]:checked ~ .btn label[for=tab3]{
+  background-color: crimson;
+  border-radius: 50%;
+}
+
+input[id=tab1]:checked ~.tab .items{top: 0;}
+input[id=tab2]:checked ~.tab .items{top: -400px;}
+input[id=tab3]:checked ~.tab .items{top: -800px;}

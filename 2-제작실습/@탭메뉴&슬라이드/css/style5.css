@@ -1,0 +1,59 @@
+@import url(common.css);
+
+body{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tab-inner{ /* 하단버튼 영역을 포함한 전체 영역 */
+  width: 300px;
+  height: 350px;
+}
+input[name=tabmenu]{display: none;}
+
+.slide{ /* 하단버튼영역을 제외한 보이는 슬라이드영역 */
+  position: relative;
+  width: 300px;
+  height: 300px;
+  overflow: hidden;
+}
+.slide-inner{
+  width: 900px;  /* 슬라이드 개수만큼의 총 가로너비(300*3) */
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 0;
+  /* a태그가 인접해있는 경우 사이에 기본공백이 생기는 문제가 발생.
+  기본폰트 사이즈가 존재하기 때문에  "font-size: 0;"속성을 적용해줌
+  ...</a><a>....*/
+  transition: 0.5s;
+}
+
+.btn{text-align: center;}
+.btn label{
+  background-color: lightgray;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+input[id=tab1]:checked ~.slide1,
+input[id=tab2]:checked ~.slide2,
+input[id=tab3]:checked ~.slide3{
+  opacity: 1;
+  left: 0;
+}
+
+input[id=tab1]:checked ~ .btn label[for=tab1],
+input[id=tab2]:checked ~ .btn label[for=tab2],
+input[id=tab3]:checked ~ .btn label[for=tab3]{
+  background-color: crimson;
+}
+
+input[id=tab1]:checked ~.slide .slide-inner{left: 0;}
+input[id=tab2]:checked ~.slide .slide-inner{left: -300px;}
+input[id=tab3]:checked ~.slide .slide-inner{left: -600px;}
