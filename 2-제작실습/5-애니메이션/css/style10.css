@@ -17,7 +17,7 @@ body {
 .loading {width: 250px;}
 .loading h4 {
 	text-align: center;
-	margin-bottom: 30px;
+	margin-bottom: 50px;
 	color: #fff;
 }
 .conic {
@@ -28,23 +28,26 @@ body {
 	border-radius: 50%;
 	position: relative;
 }
+
 .conic:before,
-.conic:after {
+.conic:after{
 	content: '';
 	position: absolute;
 	background-color: red;
 	/* width: inherit;
-	height: inherit;  */
+	height: inherit; 
+	==> inset을 사용하므로 width,height는 사용하지 않아야 밀리지 않음
+	*/
 	border-radius: inherit;
-	background-image: conic-gradient(#2ecc71, #9b59b6, #e74c3c, #3498db, #2ecc71);
-	/* top: -10px;
-	bottom: -10px;
-	left: -10px;
-	right: -10px; */
-	inset: -10px;
+	background-image: conic-gradient(red, blue, green); 
+	/* 시작점과 끝지점이 날카롭게 원뿔형태의 그라디언트가 만들어짐 */
+	background-image: conic-gradient(red, blue, green, red); 
+	/* 시작점과 끝지점이 날카롭게 되므로 끝지점에 시작점과 동일한 색상을 한번 더 넣음 */
+	inset: -20px;  /* 양수는 작아지고 음수는 커짐 */
 	z-index: -1;
-	animation: spin 3s linear infinite;
+	animation:  spin 3s linear infinite;
 }
+
 .conic:after {
 	filter: blur(20px);
 	opacity: 0.8;
@@ -65,7 +68,7 @@ body {
 
 @keyframes spin {
 	0% {
-		rotate: 0deg;
+		rotate: 0deg;  /* transform:rotate()와 동일하며,css3부터는 transform 없이 그냥 rotate만으로 사용할수 있음 */
 	}
 	100% {
 		rotate: 360deg;
@@ -75,4 +78,11 @@ body {
 
 /* 
 inset 속성 : position속성과 같이 사용해야 하고, 기본의 top,bottom,righy.left 의 축약형이다.
+
+inset ==> top right bottom left 축약
+
+inset(상 우 하 좌) <==콤마(,) 없음
+ex) inset: 10px 20px 10px 20px
+
+inset(상하 좌우)
 */

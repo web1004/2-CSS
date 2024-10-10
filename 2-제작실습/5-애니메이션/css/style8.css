@@ -28,7 +28,7 @@ body {
 	height: 20px;
 	left: 50%;
 	transform: rotate(calc(60deg * var(--i)));
-	transform-origin: 0 50px;  /* 기본이 50% 50% */
+	transform-origin: 0 50px;  /* 수평/수직, 기본이 50% 50% */
 }
 
 /* ----------------------------------------- */
@@ -47,10 +47,10 @@ body {
 	background-color: #333;
 	border-radius: 50%;
 	left: 50%;
-	transform: rotate(calc(36deg * var(--i)));
-	transform-origin: 0 50px;
+	transform: rotate(calc(36deg * var(--i)));  /* 모두 10개이므로 360를 10개로 나누어서 36도씩 반복해서 회전함 */
+	transform-origin: 0 50px;  /* 부모크기에 50% 크기만큼 수직으로 맞춤 */
 	animation: loader 1s linear infinite;
-	animation-delay: calc(0.1s * var(--i));
+	animation-delay: calc(0.1s * var(--i));  /* 총 재생시간 1초를 10개를 나누어서 0.1초씩*/
 }
 .wait {
 	color: yellowgreen;
@@ -69,6 +69,7 @@ body {
 	50% {
 		background-color: yellowgreen;
 		opacity: 1;
+		/* 빛나는듯한 효과 */
 		box-shadow: 0 0 5px yellowgreen,
 								0 0 10px yellowgreen,
 								0 0 20px yellowgreen,

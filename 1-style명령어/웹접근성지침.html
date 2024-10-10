@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <title>29-웹접근성지침</title>
+  <style>
+    .skip{
+      position: fixed;
+      top: 0;
+      left: 0;
+      background-color: #000;
+      color: #fff;
+      padding: 10px 15px;
+      text-decoration: none;
+      transform: translateY(-100%);
+      transition: 0.3s;
+    }
+    .skip:focus{ 
+      transform: translateY(0);
+    }
+
+    .tab li a{outline: none;} /* 탭의 이동을 구분할수 없음 */
+    .tab li a:focus{  
+      background-color: #000;
+      color: #fff;
+    }
+
+  </style>
+</head>
+<body>
+
+  <a href="#main-content" class="skip">본문 바로가기</a>
+
+  <h1>웹접근성지침 2.2</h1>
+  <h2>인식의 용이성 (Perceivable)</h2>
+  <h3>1.1.1	(적절한 대체 텍스트 제공)</h3>
+
+  <img src="image/sky.jpg" alt="높은건물들">
+  <!-- 이미지에 텍스트가 있는 경우는 축약해서 작성을 하고, 텍스트가 없는 경우에는 이미지를 설명할수 문구를 넣는다. -->
+
+  <img src="image/popup.jpg" alt="SALE 반값할인쿠폰....">
+
+  <img src="image/check_icon.jpg" alt="">
+  <!-- 아무 뜻이 없는 블릿같은 경우는 alt내용을 비워둔다. 내용이 없다고 해도 alt자체를 넣지 않으면 안됨! -->
+
+  <p class="back">배경으로 하는 것도 글을 넣어야 한다.</p>
+  <!-- *이미지 삽입관련 태그에는 반드시 alt 속성을 적용한다. (예: img, map) -->
+
+  <h3>1.3.1	(표의 구성) 표는 이해하기 쉽게 구성해야 한다.</h3>
+  <p>표의 헤더와 본문 등이 구분되어야 한다.</p>
+  <p>행과 열을 대표함을 표시 : scope</p>
+  <table border="1px">
+    <thead>
+      <tr>
+        <th scope="col">table-title</th>
+        <th scope="col">table-title</th>
+        <th scope="col">table-title</th>
+        <th scope="col">table-title</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">01</th>
+        <td>table-detail</td>
+        <td>table-detail</td>
+        <td>table-detail</td>
+      </tr>
+      <tr>
+        <th scope="row">02</th>
+        <td>table-detail</td>
+        <td>table-detail</td>
+        <td>table-detail</td>
+      </tr>
+      <tr>
+        <th scope="row">03</th>
+        <td>table-detail</td>
+        <td>table-detail</td>
+        <td>table-detail</td>
+      </tr>
+    </tbody>
+    <tfoot>
+      <tr>
+        <td>table-footer</td>
+        <td>table-footer</td>
+        <td>table-footer</td>
+        <td>table-footer</td>
+      </tr>
+    </tfoot>
+  </table>
+
+  <h3>1.3.2	(콘텐츠의 선형구조) 콘텐츠는 논리적인 순서로 제공해야 한다.</h3>
+  <p>
+    의도하지 않았는데 팝업이 뜨거나,탭을 누르면 순서대로 내려가야 하는데 순서가 바뀌게 하면 안된다.<br>
+    더보기 버튼은 내용이 다 나온다음에 나와야 한다.
+  </p>
+
+  <div class="notice">
+    <ul class="notice_list">
+      <li>공지사항입니다.</li>
+      <li>공지사항입니다.</li>
+      <li>공지사항입니다.</li>
+      <li>공지사항입니다.</li>
+      <li>공지사항입니다.</li>
+    </ul>
+    <a href="#">더보기</a>
+  </div>
+  
+  <h3>1.3.3	(명확한 지시사항 제공)</h3>
+  <p>아래와 같이...우축에 있는 등등....예를 들어 안전한 비밀번호를 입력하라고 하면서 안전한 비밀번호에 대한 구체적인 안내가 있어야 한다.</p>
+
+  <h3>1.4.1	(색에 무관한 콘텐츠 인식)</h3>
+  <p>예를 들어 이미지를 색으로만 구분을 하면 색을 구분 못하는 사람들은 인식을 못하기 때문에 반드시 모양으로도 컨텐츠를 구분할수 있어야 한다.</p>
+
+  
+  <h3>1.4.2	(자동 재생 금지)</h3>
+  <p>영상은 소리는 반드시 끈 상태에서 자동재생을 해야 한다. (muted-음소거속성반드시 삽입)</p>
+  <p>사이트를 귀로만 듣는 사람들일 경우는 리더기로 읽어주는 동시에 영상의 소리도 중복이 되기 때문에 인식하기 어렵기 때문이다.</p>
+
+  <h3>1.4.3	(텍스트 콘텐츠의 명도 대비) 텍스트 콘텐츠와 배경 간의 명도 대비는 4.5대 1 이상이어야 한다.</h3>
+  <!-- 구글검색 color contrast checker -->
+
+
+  <h3>1.4.4	(콘텐츠 간의 구분) 이웃한 콘텐츠는 구별될 수 있어야 한다.</h3>
+  <ol>
+    <li>(1)가독성
+      <ul>
+        <li>
+          어떤게 i 이고 1인지 구분인 안되는 글자
+        </li>
+        <li>
+          세로로 긴게 가독성이 높다. 대문자와 소문자의 문자 비율이 클수록 읽기 쉬운 서체가 된다.<br>
+          장평을 줄이는것은 안된다.
+        </li>
+        <li>
+          모든 글자가 bold 로 되어 있으면 안된다
+        </li>
+        <li>
+          Height에 대한 Character Width위 비율이 작은 것이 읽기 쉽다 (Condensed 타입)
+        </li>
+        <li>
+          글자 사이의 간격-자간(너무 넓어도 너무 작아도 안된다.)
+        </li>
+      </ul>
+
+    </li>
+    <li>(2)Readability : 전체적으로 내용이 읽기 쉬운가....
+      <ol>
+        <li>
+          타이틀과 내용사이의 적절한 간격<br>
+          serif / Sans Serif(명조체와 고딕체) - 책은 주로 명조체, 웹에서는 고딕체(강조하고 하는 곳에만 명조체)
+        </li>
+        <li>
+          줄간격(행의 높이)<br>
+          폰트 사이즈 대비 가장 읽기 편한 행높이이 황금비율은 1.618<br>
+          16px이라 하면 16*1.618 = 25~27 <br>
+          line-height:1.618; <!-- 비율이므로 폰트사이즈에 따라 바뀜 -->
+        </li>
+        <li>
+          텍스트 폭이 너무 넓으면 안된다. - Viewport 기준으로 60%, 모바일에서는 30~40글자
+          width: 60%;
+          <p style="width:60%">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. A similique dolore, molestiae aliquam ea eaque consequatur nemo quasi quod consequuntur exercitationem dolorum magnam reiciendis deserunt neque veniam rerum, atque tenetur corporis minus voluptas quidem nihil maxime. Placeat id reprehenderit, iusto rem minus quam aperiam dolores cumque cum impedit labore excepturi velit laboriosam facere exercitationem obcaecati suscipit, optio vero eligendi modi. Iure veritatis laborum sint molestias qui asperiores ipsa inventore, vel minima nemo? Dicta beatae aut quas labore ratione illum quidem hic exercitationem et eligendi esse modi recusandae, laboriosam, possimus officiis est eum provident doloribus dolores. Animi, odio. Autem, atque dolorum!
+          </p>
+        </li>
+        <li>
+          영어 긴문장을 모두 대문자로 쓰면 가독성이 떨어진다. 강조하고자 하는 글자만 대문자로
+          반복되는 요소는 단일성을 제공한다- 여백(padding,margin), 글자크기, 배경 또는 박스
+        </li>
+      </ol>
+    </li>
+  </ol>
+  <ul>
+  <hr>
+
+  <h2>운용의 용이성(Operable)</h2>
+  <h3>2.1.1	(키보드 사용 보장) 모든 기능은 키보드만으로도 사용할 수 있어야 한다.</h3>
+  <h3>2.1.2	(초점 이동과 표시) 키보드에 의한 초점은 논리적으로 이동해야 하며, 시각적으로 구별할 수 있어야 한다.</h3>
+  <p>슬라이드 같은 경우는 좌우버튼이 있는것처럼 키보드의 화살표키로도 될수 있게 한다.</p>
+  <p>탭메뉴 같은 경우 키보드의 탭키로 이동할수 있게 한다.</p>
+  <p>outline:none 을 넣게 되면 정확하게 구분할수 없다. 그럴경우는 사용자가 인식할수 있도록 보완책이 있어야 한다.(예를 들어 a:focus)</p>
+
+  <ul class="tab">
+    <li><a href="#01">content0</a>1</li>
+    <li><a href="#02">content02</a></li>
+    <li><a href="#03">content03</a></li>
+  </ul>
+  <main id="main-content">
+    <section id="01">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint saepe porro sed architecto enim accusantium amet sequi unde, cupiditate sunt illo doloribus, fugiat earum maxime reprehenderit laboriosam nam neque dicta quidem voluptas. Quae numquam dolore at, fuga corrupti quos. Nesciunt qui iure aliquam quo molestiae unde quasi inventore in officia?
+    </section>
+    <section id="02">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint saepe porro sed architecto enim accusantium amet sequi unde, cupiditate sunt illo doloribus, fugiat earum maxime reprehenderit laboriosam nam neque dicta quidem voluptas. Quae numquam dolore at, fuga corrupti quos. Nesciunt qui iure aliquam quo molestiae unde quasi inventore in officia?
+    </section>
+    <section id="03">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint saepe porro sed architecto enim accusantium amet sequi unde, cupiditate sunt illo doloribus, fugiat earum maxime reprehenderit laboriosam nam neque dicta quidem voluptas. Quae numquam dolore at, fuga corrupti quos. Nesciunt qui iure aliquam quo molestiae unde quasi inventore in officia?
+    </section>
+  </main>
+
+  <h3>2.4.1	(반복 영역 건너뛰기) 콘텐츠의 반복되는 영역은 건너뛸 수 있어야 한다.-본문바로가기</h3>
+  <p>처음부터 다시 읽어주기 때문에 반복되지 않은 주요 본문 내용으로 바로 갈수 있게 해줘야 한다.</p>
+
+  <h3>2.4.2	(제목 제공) 페이지, 프레임, 콘텐츠 블록에는 적절한 제목을 제공해야 한다.</h3>
+  <p>컨벤션-관tmq<br>
+    헤드타이틀에서 이페이지의 주요 핵심내용이 앞에 나와야 한다.<br>
+    웹접근성-운용의 용이성(틀린예)<br>
+    운용이 용이성-웹접근성지침(올바른예)<br>
+  </p>
+  <ifrmae title=""></ifrmae>
+  <p>ifrmae은 웹에서는 유투브나 비디오 같은 동영상은 내 웹페이지에 퍼올때 가장 많이 사용한다.</p>
+  
+  <h3>2.4.3	(적절한 링크 텍스트) 링크 텍스트는 용도나 목적을 이해할 수 있도록 제공해야 한다.</h3>
+  <p>
+    구체적인 더보기 링크 제공으로 해당 링크의 목적지에 대한 정보가 확실해야 한다.<br>
+    탭메뉴에서 더보기 버튼이라면 정확히 어디 탭메뉴이 더보기 인지....
+  </p>
+  <!-- 자동검사방법에서 
+  <head> 내의 <title>요소 유무체크
+  <iframe> 요소의 title 속성유무 체크
+ -->
+  <hr>
+
+  <h2>이해의 용이성(Understandable)</h2>
+  <h3>3.1.1 (기본 언어 표시) 주로 사용하는 언어를 명시해야 한다.</h3>
+  <p>본문중에서 언어가 바뀌는 부분이 있으면 표시해줘야 한다.(영어제외)</p>
+  <p>중국어로는 "안녕하세요"라고 인사할때 <span lang="zh">你好</span>라고 말해준다.</p>
+
+  <h3>3.2.1	(사용자 요구에 따른 실행) 사용자가 의도하지 않은 기능 (새 창, 초점 변화 등)은 실행되지 않아야 한다.</h3>
+  <p>내가 의도하지 않았는데 팝업이 뜨는 경우 등...</p>
+    
+  <h3>3.3.2	(레이블 제공) 사용자 입력에는 대응하는 레이블을 제공해야 한다.</h3>
+  <form action="">
+    <label for="userName">이름 : </label>
+    <input type="text" id="userName">
+    <label for="userEmail">이메일 : </label>
+    <input type="email" id="userEmaile">
+    <p>
+      <label for="married">기혼</label>
+      <input type="radio" name="marry" id="married" value="기혼">
+      <label for="unmarried">미혼</label>
+      <input type="radio" name="marry" id="unmarried" value="미혼">
+    </p>
+    <label for="message">메시지 : </label>
+    <textarea name="" id="message" cols="30" rows="10"></textarea>
+    <button>send</button>
+  </form>
+  <hr>
+
+  <h2>견고성(Robust)</h2>
+  <h3>4.1.1	(마크업 오류 방지) 마크업 언어의 요소는 열고 닫음, 중첩 관계 및 속성 선언에 오류가 없어야 한다.</h3>
+  <p>웹표준 체크 필수 - HTML/CSS</p>
+
+</body>
+</html>
+
+<!-- 
+*HTML 구성요소
+-제목요소(h1~h6)
+-문단요소(p)
+-텍스트효과(bold,italic,underline 등)
+-표(table)
+-이미지삽입(img)
+-목록(ul,ol,dl)
+
+*웹표준이란? HTML문서 양식을 준수하는 의미론적(시멘틱)인 마크업
+section 태그 밑에는 제목을 써야 한다.
+
+*웹접근성이라?
+사용자의 신체적특징/지역/성별/나이 등을 고령하여 가능한 많은 사용자가 불편없이 이용할 수 있도록 제품/서비스를 제공해야 한다.
+*한국형 웹접근성은?
+남녀노소가어떠한 환경에서도 정보를 얻을수 있게 하는것이 기본
+70%가 시각장애, 30%가 그외
+
+*Attribute 우선순위
+rel
+type
+href,src
+width,height
+target
+id
+name
+class
+style
+title, alt
+기타 속성
+
+예)
+<a href="" target=""  id=""  class="" style="" title="">...</a>
+
+*주석처리도 잘 확인할것!
+
+
+
+*네이버 웹접근성 가이드
+
+*웹접근성 준수하기
+http://www.websoul.co.kr/accessibility/WA_guide21.asp
+
+html : http://validator.kldp.org
+css : http://css-validator.kldp.org
+-->
